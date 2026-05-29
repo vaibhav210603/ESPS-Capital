@@ -93,11 +93,13 @@ export default function About({ transparent = false }: { transparent?: boolean }
               className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-rule bg-bg-deep"
             >
               <video
-                src="/Screen_Recording_2026-05-29_at_43813PM_202605291651.mp4"
+                src="/about_video.mp4"
+                poster="/about_video_poster.webp"
                 autoPlay
                 loop
                 muted
                 playsInline
+                preload="none"
                 className="w-full h-full object-cover"
               />
             </motion.div>

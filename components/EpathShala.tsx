@@ -73,7 +73,7 @@ export default function EpathShala() {
             className="relative w-full aspect-[3/4] border border-white/10 overflow-hidden rounded-xl"
           >
             <img
-              src="/images/academy_formal_1780048950628.png"
+              src="/images/academy_formal.webp"
               alt="Modern financial academy"
               className="w-full h-full object-cover"
             />

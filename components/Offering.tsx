@@ -14,7 +14,7 @@ const services = [
     description:
       "Whether you're a startup or an established business, we help secure the funding necessary for growth, expansion, or innovation. Our network of investors and financial institutions gives us the leverage to connect you with the right partners.",
     points: ['Main Board IPOs', 'QIPs and Rights Issues', 'Debt Offering'],
-    image: '/images/service_capital_raising.png',
+    image: '/images/service_capital_raising.webp',
   },
   {
     icon: GitMerge,
@@ -34,7 +34,7 @@ const services = [
     description:
       'In times of financial stress or strategic pivoting, our restructuring services help businesses realign their operations, optimize capital structures, and navigate the complexities of turnaround strategies.',
     points: [],
-    image: '/images/service_restructuring.png',
+    image: '/images/service_restructuring.webp',
   },
   {
     icon: Handshake,

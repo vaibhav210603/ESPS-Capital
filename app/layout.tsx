@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Instrument_Serif, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
+import Preloader from '@/components/Preloader';
 
 const instrument = Instrument_Serif({
   subsets: ['latin'],
@@ -38,6 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${instrument.variable} ${geist.variable} ${geistMono.variable}`}>
       <body>
+        <Preloader />
         <SmoothScroll />
         {children}
       </body>
