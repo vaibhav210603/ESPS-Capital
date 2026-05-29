@@ -107,10 +107,10 @@ export default function About({ transparent = false }: { transparent?: boolean }
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.9, ease: EASE }}
-              className="bg-bg-deep rounded-2xl p-10 md:p-14"
+              className="bg-black/70 backdrop-blur-md border border-white/10 shadow-xl rounded-2xl p-10 md:p-14"
             >
-              <h3 className="text-2xl font-serif italic text-ink mb-4">Our Vision</h3>
-              <p className="text-lg text-ink-soft leading-relaxed font-sans">
+              <h3 className="text-2xl font-serif italic text-white mb-4">Our Vision</h3>
+              <p className="text-lg text-white/80 leading-relaxed font-sans">
                 To become one of the best leading financial distribution houses in India.
               </p>
             </motion.div>
@@ -120,10 +120,10 @@ export default function About({ transparent = false }: { transparent?: boolean }
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.9, ease: EASE }}
-              className="bg-ink rounded-2xl p-10 md:p-14"
+              className="bg-black/70 backdrop-blur-md border border-white/10 shadow-xl rounded-2xl p-10 md:p-14"
             >
-              <h3 className="text-2xl font-serif italic text-bg mb-4">Our Mission</h3>
-              <p className="text-lg text-bg/80 leading-relaxed font-sans mb-6">
+              <h3 className="text-2xl font-serif italic text-white mb-4">Our Mission</h3>
+              <p className="text-lg text-white/80 leading-relaxed font-sans">
                 At the heart of our vision lies a mission to redefine financial distribution in India. We are dedicated to setting new benchmarks in service, reliability, and customer satisfaction, ensuring every client achieves their financial goals seamlessly.
               </p>
             </motion.div>
@@ -133,10 +133,10 @@ export default function About({ transparent = false }: { transparent?: boolean }
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.9, ease: EASE }}
-              className="bg-bg-deep rounded-2xl p-10 md:p-14"
+              className="bg-black/70 backdrop-blur-md border border-white/10 shadow-xl rounded-2xl p-10 md:p-14"
             >
-              <h3 className="text-2xl font-serif italic text-ink mb-4">Our Promise</h3>
-              <p className="text-lg text-ink-soft leading-relaxed font-sans">
+              <h3 className="text-2xl font-serif italic text-white mb-4">Our Promise</h3>
+              <p className="text-lg text-white/80 leading-relaxed font-sans">
                 Together, we aspire to make financial growth accessible, sustainable, and impactful.
               </p>
             </motion.div>
