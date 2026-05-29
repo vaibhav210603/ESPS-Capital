@@ -84,17 +84,20 @@ export default function About({ transparent = false }: { transparent?: boolean }
               ))}
             </div>
 
-            {/* Editorial Image */}
+            {/* Editorial Video */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: EASE }}
-              className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-rule"
+              className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-rule bg-bg-deep"
             >
-              <img
-                src="/images/about_formal_1780048856330.png"
-                alt="Editorial collage of financial advisors"
+              <video
+                src="/Screen_Recording_2026-05-29_at_43813PM_202605291651.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
                 className="w-full h-full object-cover"
               />
             </motion.div>
