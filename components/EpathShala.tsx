@@ -5,7 +5,7 @@ import { PlayCircle, BookOpen, GraduationCap, Layers } from 'lucide-react';
 import SectionWrapper from './SectionWrapper';
 import { Reveal } from './Reveal';
 
-const EASE = [0.16, 1, 0.3, 1] as const;
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 const features = [
   { icon: BookOpen, label: 'In-depth resources' },
@@ -16,75 +16,70 @@ const features = [
 
 export default function EpathShala() {
   return (
-    <SectionWrapper id="epathshala" className="bg-white">
-      <div className="grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-        {/* Text */}
-        <div className="order-2 md:order-1">
-          <Reveal as="span" className="text-brand-600 font-semibold tracking-wide uppercase text-sm">
-            E-पाठ Shala
-          </Reveal>
-          <Reveal as="h2" delay={0.1} className="text-3xl md:text-5xl font-bold mt-4 mb-6 leading-tight text-dark">
-            <span className="text-gradient">E-पाठ Shala</span> — an online learning platform
-          </Reveal>
-          <Reveal as="p" delay={0.15} className="text-base md:text-lg text-gray-600 leading-relaxed font-light mb-5">
-            Learn about the financial markets with in-depth resources and videos
-            created by ESPS Capital.
-          </Reveal>
-          <Reveal as="p" delay={0.2} className="text-base md:text-lg text-gray-600 leading-relaxed font-light">
-            E-पाठ Shala is an online learning platform comprising extensive
-            information about the financial market. Created by ESPS Capital, it
-            offers free access to a wealth of knowledge that benefits both
-            beginner and expert investors. The platform includes a variety of
-            series and modules designed to guide individuals through the Indian
-            economy and enhance their understanding of daily investing
-            activities.
-          </Reveal>
+    <SectionWrapper id="epathshala" className="bg-ink text-bg relative px-6 md:px-12 py-[12vh]">
+      <div className="max-w-[90rem] mx-auto">
+        <div className="grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+          <div className="text-left">
+            <Reveal as="div" className="font-mono text-[10px] md:text-xs uppercase tracking-[0.1em] text-muted mb-6">
+              E-पाठ Shala
+            </Reveal>
+            <Reveal as="h2" delay={0.1} className="text-5xl md:text-7xl font-serif tracking-tight leading-[0.95] mb-8">
+              An online <span className="italic text-brand-red">learning</span> platform
+            </Reveal>
+            <Reveal as="div" delay={0.15} className="text-lg text-bg/80 leading-relaxed font-sans space-y-6">
+              <p>
+                Learn about the financial markets with in-depth resources and videos created by ESPS Capital.
+              </p>
+              <p>
+                E-पाठ Shala is an online learning platform comprising extensive information about the financial market. Created by ESPS Capital, it offers free access to a wealth of knowledge that benefits both beginner and expert investors. The platform includes a variety of series and modules designed to guide individuals through the Indian economy and enhance their understanding of daily investing activities.
+              </p>
+            </Reveal>
+            
+            <Reveal as="div" delay={0.2} className="mt-10 mb-16">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-bg text-ink px-8 py-4 text-sm font-sans font-medium hover:bg-bg-deep transition-all duration-300"
+              >
+                Start Learning
+              </a>
+            </Reveal>
 
-          <div className="grid grid-cols-2 gap-4 mt-9">
-            {features.map((f, i) => (
-              <Reveal key={f.label} delay={0.25 + i * 0.08}>
-                <div className="flex items-center gap-3 rounded-xl border border-gray-100 bg-gray-50 px-4 py-3 hover:border-brand-100 hover:bg-white hover:shadow-sm transition-all duration-300">
-                  <f.icon className="w-5 h-5 text-brand-700 shrink-0" />
-                  <span className="text-sm font-medium text-gray-700">{f.label}</span>
-                </div>
-              </Reveal>
-            ))}
+            {/* Feature Cards Grid */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              {features.map((f, i) => (
+                <motion.div
+                  key={f.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + i * 0.1, duration: 0.6, ease: EASE }}
+                  className="group border border-white/10 bg-white/5 p-6 hover:border-brand-red transition-colors duration-500 flex flex-col items-start gap-4"
+                >
+                  <f.icon className="w-6 h-6 text-brand-red" />
+                  <div>
+                    <div className="font-mono text-[10px] uppercase text-muted mb-2">Feature</div>
+                    <div className="font-serif text-xl text-bg">{f.label}</div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: EASE }}
+            className="relative w-full aspect-[3/4] border border-white/10 filter grayscale contrast-125 overflow-hidden"
+          >
+            <img
+              src="/images/academy_vintage_1780044085639.png"
+              alt="Vintage illustration of books and academy"
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
         </div>
 
-        {/* Visual */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: EASE }}
-          className="order-1 md:order-2 relative"
-        >
-          <div className="relative rounded-3xl overflow-hidden shadow-xl shadow-brand-900/10 group">
-            <img
-              src="https://images.unsplash.com/photo-1543286386-2e659306cd6c?auto=format&fit=crop&w=1400&q=80"
-              alt="E-पाठ Shala learning platform"
-              className="w-full h-full object-cover aspect-[4/3] group-hover:scale-105 transition-transform duration-700"
-            />
-            <div className="absolute inset-0 bg-gradient-to-tr from-brand-950/70 via-brand-950/20 to-transparent" />
-            <motion.div
-              whileHover={{ scale: 1.08 }}
-              className="absolute inset-0 flex items-center justify-center cursor-pointer"
-            >
-              <div className="relative">
-                <span className="absolute inset-0 rounded-full bg-gold-400/40 animate-ping" />
-                <span className="relative flex items-center justify-center w-20 h-20 rounded-full bg-white/95 backdrop-blur shadow-xl">
-                  <PlayCircle className="w-10 h-10 text-brand-800" />
-                </span>
-              </div>
-            </motion.div>
-          </div>
-          {/* floating tag */}
-          <div className="absolute -bottom-5 -left-3 md:-left-6 rounded-2xl bg-brand-900 text-white px-5 py-4 shadow-glow">
-            <div className="text-2xl font-bold text-gold-400">Free</div>
-            <div className="text-[11px] uppercase tracking-wider text-white/70">Access for all</div>
-          </div>
-        </motion.div>
       </div>
     </SectionWrapper>
   );

@@ -9,7 +9,24 @@
     -moz-osx-font-smoothing: grayscale;
   }
   body {
-    @apply bg-white text-dark font-sans overflow-x-hidden;
+    @apply bg-bg text-ink font-sans overflow-x-hidden;
+  }
+  
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image: url('/images/paper_texture_1780043953047.png');
+    background-repeat: repeat;
+    background-size: 400px;
+    opacity: 0.15;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-normal tracking-tight leading-[0.95];
   }
 
   /* Lenis Smooth Scroll */
@@ -31,18 +48,12 @@
   }
 
   ::selection {
-    background: #1e3369;
+    background: #D32238;
     color: #fff;
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-900 to-brand-600;
-  }
-  .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-gold-400 via-gold-500 to-gold-600;
-  }
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -50,20 +61,17 @@
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
   }
-  .shimmer-text {
-    background: linear-gradient(
-      90deg,
-      #1e3369 0%,
-      #1e3369 35%,
-      #5c92f0 50%,
-      #1e3369 65%,
-      #1e3369 100%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    @apply animate-shimmer;
+  .hairline-b {
+    @apply border-b border-rule;
+  }
+  .hairline-t {
+    @apply border-t border-rule;
+  }
+  .hairline-l {
+    @apply border-l border-rule;
+  }
+  .hairline-r {
+    @apply border-r border-rule;
   }
 }
 
@@ -72,9 +80,9 @@
   width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #f0f4ff;
+  background: #F4EFE9;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(#1e3369, #1d4ed8);
+  background: #16110F;
   border-radius: 999px;
 }

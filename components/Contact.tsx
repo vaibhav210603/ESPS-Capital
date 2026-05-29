@@ -4,87 +4,69 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, ArrowUpRight } from 'lucide-react';
 import { Reveal } from './Reveal';
 
-const EASE = [0.16, 1, 0.3, 1] as const;
+const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative py-20 md:py-32 overflow-hidden bg-gray-50">
-      <div className="absolute inset-0 bg-grid-faint [background-size:48px_48px] opacity-40" />
-      <div className="relative max-w-7xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: EASE }}
-          className="relative rounded-[2rem] overflow-hidden bg-brand-950 px-8 py-14 md:p-16"
-        >
-          {/* decorative */}
-          <div className="absolute -top-24 -right-16 w-96 h-96 rounded-full bg-brand-600/25 blur-[120px]" />
-          <div className="absolute -bottom-24 -left-16 w-96 h-96 rounded-full bg-gold-500/15 blur-[120px]" />
-          <div className="absolute inset-0 bg-grid-faint [background-size:40px_40px] opacity-[0.07]" />
+    <section id="contact" className="relative bg-bg px-6 md:px-12 py-[16vh] overflow-hidden">
+      <div className="max-w-[90rem] mx-auto flex flex-col items-center text-center">
+        
+        <Reveal as="div" className="font-mono text-[10px] md:text-xs uppercase tracking-[0.1em] text-muted mb-8">
+          <span className="text-brand-red mr-2">●</span>
+          Get in touch with us!
+        </Reveal>
 
-          <div className="relative grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <Reveal as="span" className="text-gold-400 font-semibold tracking-wide uppercase text-sm">
-                Get in touch with us!
-              </Reveal>
-              <Reveal as="h2" delay={0.1} className="text-3xl md:text-5xl font-bold mt-4 leading-tight text-white">
-                Ready to empower your{' '}
-                <span className="text-gradient-gold">financial growth</span>?
-              </Reveal>
-              <Reveal as="p" delay={0.2} className="text-base md:text-lg text-white/70 leading-relaxed font-light mt-6 max-w-lg">
-                We drive client growth through expert financial advisory and
-                strong industry relationships. Let&rsquo;s start the conversation.
-              </Reveal>
+        <Reveal as="h2" delay={0.1} className="text-6xl md:text-8xl font-serif text-ink tracking-tight leading-[0.9] max-w-4xl mb-12 relative">
+          Ready to empower your <span className="italic text-brand-red">financial growth?</span>
+          <motion.a
+            href="mailto:info@espscapital.com"
+            whileHover={{ scale: 1.1, rotate: 10 }}
+            className="hidden md:inline-flex absolute -right-20 top-1/2 -translate-y-1/2 items-center justify-center w-24 h-24 rounded-full border border-rule hover:bg-ink hover:text-bg transition-colors duration-500"
+          >
+            <ArrowUpRight className="w-8 h-8 stroke-1" />
+          </motion.a>
+        </Reveal>
 
-              <motion.a
-                href="mailto:info@espscapital.com"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 mt-9 rounded-full bg-gradient-to-r from-gold-400 to-gold-600 text-white px-8 py-4 text-base font-medium shadow-gold hover:from-gold-500 hover:to-gold-700 transition-all duration-300"
-              >
-                Contact Us! <ArrowUpRight className="w-5 h-5" />
-              </motion.a>
-            </div>
+        <Reveal as="p" delay={0.2} className="text-lg md:text-xl text-ink-soft leading-relaxed font-sans max-w-xl mx-auto mb-16">
+          We drive client growth through expert financial advisory and strong industry relationships. Let&rsquo;s start the conversation.
+        </Reveal>
 
-            {/* contact details card */}
-            <div className="lg:justify-self-end w-full max-w-md">
-              <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-8">
-                <h3 className="text-xl font-bold text-white mb-6">Contact Details</h3>
-                <div className="space-y-5">
-                  <a
-                    href="mailto:info@espscapital.com"
-                    className="flex items-center gap-4 group"
-                  >
-                    <span className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-gold-500/20 transition-colors">
-                      <Mail className="w-5 h-5 text-gold-400" />
-                    </span>
-                    <span>
-                      <span className="block text-xs uppercase tracking-wider text-white/50">Email</span>
-                      <span className="block text-white font-medium group-hover:text-gold-400 transition-colors">
-                        info@espscapital.com
-                      </span>
-                    </span>
-                  </a>
-                  <a
-                    href="tel:+912240156765"
-                    className="flex items-center gap-4 group"
-                  >
-                    <span className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center group-hover:bg-gold-500/20 transition-colors">
-                      <Phone className="w-5 h-5 text-gold-400" />
-                    </span>
-                    <span>
-                      <span className="block text-xs uppercase tracking-wider text-white/50">Phone</span>
-                      <span className="block text-white font-medium group-hover:text-gold-400 transition-colors">
-                        +91 22 4015 6765
-                      </span>
-                    </span>
-                  </a>
-                </div>
-              </div>
-            </div>
+        <Reveal as="div" delay={0.3} className="md:hidden mb-16">
+          <a
+            href="mailto:info@espscapital.com"
+            className="inline-flex items-center gap-2 rounded-full bg-brand-red text-white px-8 py-4 text-sm font-sans font-medium"
+          >
+            Contact Us! <ArrowUpRight className="w-4 h-4" />
+          </a>
+        </Reveal>
+
+        {/* Animated Rule */}
+        <div className="w-full max-w-3xl h-[1px] bg-rule relative mb-16 overflow-hidden">
+          <motion.div
+            animate={{ x: ['-100%', '300%'] }}
+            transition={{ duration: 4, repeat: Infinity, ease: 'linear' }}
+            className="absolute top-0 left-0 w-32 h-[1px] bg-brand-red"
+          >
+            <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-brand-red" />
+          </motion.div>
+        </div>
+
+        {/* Contact Columns */}
+        <div className="flex flex-wrap justify-center gap-12 text-center">
+          <div className="flex flex-col items-center gap-2 group">
+            <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-muted">Email</span>
+            <a href="mailto:info@espscapital.com" className="font-serif text-xl md:text-2xl text-ink group-hover:text-brand-red transition-colors">
+              info@espscapital.com
+            </a>
           </div>
-        </motion.div>
+          <div className="flex flex-col items-center gap-2 group">
+            <span className="font-mono text-[10px] uppercase tracking-[0.1em] text-muted">Phone</span>
+            <a href="tel:+912240156765" className="font-serif text-xl md:text-2xl text-ink group-hover:text-brand-red transition-colors">
+              +91 22 4015 6765
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
   );

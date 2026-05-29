@@ -18,7 +18,7 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
+    const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
@@ -26,42 +26,21 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 w-full z-50">
-      {/* Top bar */}
-      <div className="bg-brand-900 text-white py-1.5">
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <span className="tracking-widest uppercase text-[10px] sm:text-xs text-white/70">
-            Your Trusted Partner in Strategic Financial Advisory
-          </span>
-          <div className="flex items-center gap-4">
-            {[Linkedin, Twitter, Facebook].map((Icon, i) => (
-              <a
-                key={i}
-                href="#"
-                className="text-white/70 hover:text-gold-400 transition-colors"
-                aria-label="social"
-              >
-                <Icon className="w-3.5 h-3.5" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Main nav */}
       <div
         className={`transition-all duration-500 ${scrolled
-            ? 'bg-white/85 backdrop-blur-xl border-b border-brand-100/40 shadow-sm'
+            ? 'bg-bg/80 backdrop-blur-xl hairline-b'
             : 'bg-transparent border-b border-transparent'
           }`}
       >
-        <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
-          <a href="#home" className="group flex items-center gap-2.5">
-            <LogoMark size={56} className="shrink-0" />
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <a href="#home" className="group flex items-center gap-3">
+            <LogoMark size={48} className="shrink-0" />
             <span className="flex flex-col leading-none">
-              <span className="text-lg md:text-xl font-extrabold tracking-[0.14em] text-brand-900 group-hover:text-brand-700 transition-colors">
-                ESPS CAPITAL
+              <span className="text-xl md:text-2xl font-serif text-ink group-hover:text-ink/80 transition-colors">
+                ESPS Capital
               </span>
-              <span className="font-serif italic text-[11px] md:text-xs text-gray-500 mt-0.5">
+              <span className="font-sans italic text-[11px] md:text-xs text-muted mt-1">
                 Knowledge Creates Wealth
               </span>
             </span>
@@ -73,10 +52,10 @@ export default function Navbar() {
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-brand-900/80 hover:text-brand-900 transition-colors relative group"
+                className="text-sm font-medium font-sans text-ink/80 hover:text-ink transition-colors relative group"
               >
                 {link.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gold-500 group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-ink group-hover:w-full transition-all duration-300" />
               </a>
             ))}
           </nav>
@@ -84,17 +63,17 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <motion.a
               href="#contact"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center gap-1.5 rounded-full bg-brand-900 text-white px-6 py-2.5 text-sm font-medium hover:bg-brand-800 shadow-lg hover:shadow-xl transition-all duration-300"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-1.5 rounded-full bg-ink text-bg px-6 py-2.5 text-sm font-sans font-medium hover:bg-ink-soft transition-all duration-300"
             >
-              Get Started <ArrowUpRight className="w-4 h-4" />
+              Get Started
             </motion.a>
           </div>
 
           {/* Mobile toggle */}
           <button
-            className="lg:hidden text-brand-900 p-2"
+            className="lg:hidden text-ink p-2"
             onClick={() => setOpen((o) => !o)}
             aria-label="menu"
           >
@@ -110,23 +89,24 @@ export default function Navbar() {
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden bg-white border-t border-brand-100"
+              className="lg:hidden overflow-hidden bg-ink text-bg"
             >
-              <div className="px-6 py-4 flex flex-col gap-1">
-                {navLinks.map((link) => (
+              <div className="px-6 py-8 flex flex-col gap-4">
+                {navLinks.map((link, i) => (
                   <a
                     key={link.label}
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="text-base font-semibold text-brand-900 border-l-2 border-brand-200 ml-1 pl-4 py-2.5 hover:text-brand-700 hover:border-gold-500 transition-colors"
+                    className="flex items-center gap-4 text-3xl font-serif text-bg hover:text-bg-deep transition-colors"
                   >
+                    <span className="font-mono text-xs text-brand-red">0{i + 1}</span>
                     {link.label}
                   </a>
                 ))}
                 <a
                   href="#contact"
                   onClick={() => setOpen(false)}
-                  className="mt-3 inline-flex items-center justify-center rounded-full bg-brand-900 text-white px-6 py-3 text-sm font-medium"
+                  className="mt-6 inline-flex items-center justify-center rounded-full border border-bg/20 text-bg px-6 py-3 text-sm font-sans font-medium"
                 >
                   Get Started
                 </a>

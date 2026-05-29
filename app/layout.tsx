@@ -1,19 +1,26 @@
 import type { Metadata } from 'next';
-import { Inter, Fraunces } from 'next/font/google';
+import { Instrument_Serif, Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import SmoothScroll from '@/components/SmoothScroll';
 
-const inter = Inter({
+const instrument = Instrument_Serif({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-inter',
+  weight: ['400'],
+  variable: '--font-instrument',
   display: 'swap',
 });
 
-const fraunces = Fraunces({
+const geist = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-fraunces',
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-geist',
+  display: 'swap',
+});
+
+const geistMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400'],
+  variable: '--font-geist-mono',
   display: 'swap',
 });
 
@@ -29,7 +36,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="en" className={`${instrument.variable} ${geist.variable} ${geistMono.variable}`}>
       <body>
         <SmoothScroll />
         {children}
