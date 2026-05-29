@@ -101,16 +101,23 @@ export default function About({ transparent = false }: { transparent?: boolean }
           </div>
 
           {/* Right: Scrolling Content Panels */}
-          <div className="space-y-16">
+          <div className="space-y-16 relative">
+            {/* Apple-style colorful glowing background gradient blobs */}
+            <div className="absolute -top-12 -left-16 w-80 h-80 rounded-full bg-blue-600/20 blur-[100px] pointer-events-none" />
+            <div className="absolute top-1/3 -right-16 w-96 h-96 rounded-full bg-brand-red/15 blur-[120px] pointer-events-none" />
+            <div className="absolute -bottom-16 left-12 w-80 h-80 rounded-full bg-purple-600/15 blur-[100px] pointer-events-none" />
+
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.9, ease: EASE }}
-              className="bg-black/70 backdrop-blur-md border border-white/10 shadow-xl rounded-2xl p-10 md:p-14"
+              className="relative overflow-hidden bg-black/[0.65] backdrop-blur-2xl border border-white/[0.08] border-b-white/[0.03] border-r-white/[0.03] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] rounded-3xl p-10 md:p-14 group hover:border-white/[0.15] transition-colors duration-500"
             >
-              <h3 className="text-2xl font-serif italic text-white mb-4">Our Vision</h3>
-              <p className="text-lg text-white/80 leading-relaxed font-sans">
+              {/* Apple-style high-end gloss overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05] pointer-events-none" />
+              <h3 className="relative z-10 text-2xl font-serif italic text-white mb-4">Our Vision</h3>
+              <p className="relative z-10 text-lg text-white/80 leading-relaxed font-sans">
                 To become one of the best leading financial distribution houses in India.
               </p>
             </motion.div>
@@ -120,10 +127,12 @@ export default function About({ transparent = false }: { transparent?: boolean }
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.9, ease: EASE }}
-              className="bg-black/70 backdrop-blur-md border border-white/10 shadow-xl rounded-2xl p-10 md:p-14"
+              className="relative overflow-hidden bg-black/[0.65] backdrop-blur-2xl border border-white/[0.08] border-b-white/[0.03] border-r-white/[0.03] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] rounded-3xl p-10 md:p-14 group hover:border-white/[0.15] transition-colors duration-500"
             >
-              <h3 className="text-2xl font-serif italic text-white mb-4">Our Mission</h3>
-              <p className="text-lg text-white/80 leading-relaxed font-sans">
+              {/* Apple-style high-end gloss overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05] pointer-events-none" />
+              <h3 className="relative z-10 text-2xl font-serif italic text-white mb-4">Our Mission</h3>
+              <p className="relative z-10 text-lg text-white/80 leading-relaxed font-sans">
                 At the heart of our vision lies a mission to redefine financial distribution in India. We are dedicated to setting new benchmarks in service, reliability, and customer satisfaction, ensuring every client achieves their financial goals seamlessly.
               </p>
             </motion.div>
@@ -133,10 +142,12 @@ export default function About({ transparent = false }: { transparent?: boolean }
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.9, ease: EASE }}
-              className="bg-black/70 backdrop-blur-md border border-white/10 shadow-xl rounded-2xl p-10 md:p-14"
+              className="relative overflow-hidden bg-black/[0.65] backdrop-blur-2xl border border-white/[0.08] border-b-white/[0.03] border-r-white/[0.03] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] rounded-3xl p-10 md:p-14 group hover:border-white/[0.15] transition-colors duration-500"
             >
-              <h3 className="text-2xl font-serif italic text-white mb-4">Our Promise</h3>
-              <p className="text-lg text-white/80 leading-relaxed font-sans">
+              {/* Apple-style high-end gloss overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05] pointer-events-none" />
+              <h3 className="relative z-10 text-2xl font-serif italic text-white mb-4">Our Promise</h3>
+              <p className="relative z-10 text-lg text-white/80 leading-relaxed font-sans">
                 Together, we aspire to make financial growth accessible, sustainable, and impactful.
               </p>
             </motion.div>
