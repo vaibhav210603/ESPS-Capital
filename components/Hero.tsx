@@ -30,7 +30,7 @@ export default function Hero() {
         className="absolute inset-0 z-0 pointer-events-none opacity-30"
       >
         <img
-          src="/images/hero_man_bg.png"
+          src="/images/hero.png"
           alt="ESPS Capital Representative"
           className="w-full h-full object-cover object-center"
         />
