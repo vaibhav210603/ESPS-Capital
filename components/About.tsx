@@ -103,51 +103,78 @@ export default function About({ transparent = false }: { transparent?: boolean }
           {/* Right: Scrolling Content Panels */}
           <div className="space-y-16 relative">
             {/* Apple-style colorful glowing background gradient blobs */}
-            <div className="absolute -top-12 -left-16 w-80 h-80 rounded-full bg-blue-600/20 blur-[100px] pointer-events-none" />
-            <div className="absolute top-1/3 -right-16 w-96 h-96 rounded-full bg-brand-red/15 blur-[120px] pointer-events-none" />
-            <div className="absolute -bottom-16 left-12 w-80 h-80 rounded-full bg-purple-600/15 blur-[100px] pointer-events-none" />
+            <div className="absolute -top-12 -left-16 w-80 h-80 rounded-full bg-blue-600/10 blur-[100px] pointer-events-none" />
+            <div className="absolute top-1/3 -right-16 w-96 h-96 rounded-full bg-brand-red/10 blur-[120px] pointer-events-none" />
+            <div className="absolute -bottom-16 left-12 w-80 h-80 rounded-full bg-purple-600/10 blur-[100px] pointer-events-none" />
 
+            {/* Our Vision Card */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.9, ease: EASE }}
-              className="relative overflow-hidden bg-black/[0.65] backdrop-blur-2xl border border-white/[0.08] border-b-white/[0.03] border-r-white/[0.03] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] rounded-3xl p-10 md:p-14 group hover:border-white/[0.15] transition-colors duration-500"
+              className="relative overflow-hidden bg-gradient-to-br from-[#0c0d12]/95 via-[#14151f]/90 to-[#0a0a0f]/95 backdrop-blur-3xl border border-white/[0.07] border-b-white/[0.02] border-r-white/[0.02] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] rounded-3xl p-10 md:p-14 group hover:border-brand-red/30 hover:shadow-[0_30px_60px_-15px_rgba(185,28,28,0.15)] transition-all duration-500"
             >
-              {/* Apple-style high-end gloss overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05] pointer-events-none" />
-              <h3 className="relative z-10 text-2xl font-serif italic text-white mb-4">Our Vision</h3>
-              <p className="relative z-10 text-lg text-white/80 leading-relaxed font-sans">
+              {/* Dynamic Corner Ambient Glows */}
+              <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-brand-red/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              <div className="absolute -left-16 -bottom-16 w-48 h-48 rounded-full bg-blue-500/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              
+              {/* Apple Gloss/Sheen Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.01] to-white/[0.04] pointer-events-none" />
+              
+              {/* Left edge neon-bevel highlight */}
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-brand-red via-brand-red/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              
+              <h3 className="relative z-10 text-2xl font-serif italic text-white mb-4 transition-transform duration-500 group-hover:translate-x-1">Our Vision</h3>
+              <p className="relative z-10 text-lg text-white/80 leading-relaxed font-sans transition-transform duration-500 group-hover:translate-x-1">
                 To become one of the best leading financial distribution houses in India.
               </p>
             </motion.div>
 
+            {/* Our Mission Card */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.9, ease: EASE }}
-              className="relative overflow-hidden bg-black/[0.65] backdrop-blur-2xl border border-white/[0.08] border-b-white/[0.03] border-r-white/[0.03] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] rounded-3xl p-10 md:p-14 group hover:border-white/[0.15] transition-colors duration-500"
+              className="relative overflow-hidden bg-gradient-to-br from-[#0c0d12]/95 via-[#14151f]/90 to-[#0a0a0f]/95 backdrop-blur-3xl border border-white/[0.07] border-b-white/[0.02] border-r-white/[0.02] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] rounded-3xl p-10 md:p-14 group hover:border-brand-red/30 hover:shadow-[0_30px_60px_-15px_rgba(185,28,28,0.15)] transition-all duration-500"
             >
-              {/* Apple-style high-end gloss overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05] pointer-events-none" />
-              <h3 className="relative z-10 text-2xl font-serif italic text-white mb-4">Our Mission</h3>
-              <p className="relative z-10 text-lg text-white/80 leading-relaxed font-sans">
+              {/* Dynamic Corner Ambient Glows */}
+              <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-brand-red/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              <div className="absolute -left-16 -bottom-16 w-48 h-48 rounded-full bg-blue-500/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              
+              {/* Apple Gloss/Sheen Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.01] to-white/[0.04] pointer-events-none" />
+              
+              {/* Left edge neon-bevel highlight */}
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-brand-red via-brand-red/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              
+              <h3 className="relative z-10 text-2xl font-serif italic text-white mb-4 transition-transform duration-500 group-hover:translate-x-1">Our Mission</h3>
+              <p className="relative z-10 text-lg text-white/80 leading-relaxed font-sans transition-transform duration-500 group-hover:translate-x-1">
                 At the heart of our vision lies a mission to redefine financial distribution in India. We are dedicated to setting new benchmarks in service, reliability, and customer satisfaction, ensuring every client achieves their financial goals seamlessly.
               </p>
             </motion.div>
 
+            {/* Our Promise Card */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-100px' }}
               transition={{ duration: 0.9, ease: EASE }}
-              className="relative overflow-hidden bg-black/[0.65] backdrop-blur-2xl border border-white/[0.08] border-b-white/[0.03] border-r-white/[0.03] shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] rounded-3xl p-10 md:p-14 group hover:border-white/[0.15] transition-colors duration-500"
+              className="relative overflow-hidden bg-gradient-to-br from-[#0c0d12]/95 via-[#14151f]/90 to-[#0a0a0f]/95 backdrop-blur-3xl border border-white/[0.07] border-b-white/[0.02] border-r-white/[0.02] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.8)] rounded-3xl p-10 md:p-14 group hover:border-brand-red/30 hover:shadow-[0_30px_60px_-15px_rgba(185,28,28,0.15)] transition-all duration-500"
             >
-              {/* Apple-style high-end gloss overlay */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.02] to-white/[0.05] pointer-events-none" />
-              <h3 className="relative z-10 text-2xl font-serif italic text-white mb-4">Our Promise</h3>
-              <p className="relative z-10 text-lg text-white/80 leading-relaxed font-sans">
+              {/* Dynamic Corner Ambient Glows */}
+              <div className="absolute -right-16 -top-16 w-48 h-48 rounded-full bg-brand-red/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              <div className="absolute -left-16 -bottom-16 w-48 h-48 rounded-full bg-blue-500/10 blur-[40px] opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+              
+              {/* Apple Gloss/Sheen Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.01] to-white/[0.04] pointer-events-none" />
+              
+              {/* Left edge neon-bevel highlight */}
+              <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-gradient-to-b from-brand-red via-brand-red/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+              
+              <h3 className="relative z-10 text-2xl font-serif italic text-white mb-4 transition-transform duration-500 group-hover:translate-x-1">Our Promise</h3>
+              <p className="relative z-10 text-lg text-white/80 leading-relaxed font-sans transition-transform duration-500 group-hover:translate-x-1">
                 Together, we aspire to make financial growth accessible, sustainable, and impactful.
               </p>
             </motion.div>
