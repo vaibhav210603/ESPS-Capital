@@ -90,12 +90,12 @@ export default function About() {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: EASE }}
-              className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-rule filter grayscale contrast-125"
+              className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-rule"
             >
               <img
-                src="/images/about_editorial_1780043985004.png"
+                src="/images/about_formal_1780048856330.png"
                 alt="Editorial collage of financial advisors"
-                className="w-full h-full object-cover mix-blend-multiply"
+                className="w-full h-full object-cover"
               />
             </motion.div>
           </div>

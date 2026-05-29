@@ -70,11 +70,11 @@ export default function EpathShala() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1, ease: EASE }}
-            className="relative w-full aspect-[3/4] border border-white/10 filter grayscale contrast-125 overflow-hidden"
+            className="relative w-full aspect-[3/4] border border-white/10 overflow-hidden rounded-xl"
           >
             <img
-              src="/images/academy_vintage_1780044085639.png"
-              alt="Vintage illustration of books and academy"
+              src="/images/academy_formal_1780048950628.png"
+              alt="Modern financial academy"
               className="w-full h-full object-cover"
             />
           </motion.div>

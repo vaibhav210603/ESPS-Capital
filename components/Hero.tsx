@@ -27,12 +27,12 @@ export default function Hero() {
       {/* Hero Parallax Background Image */}
       <motion.div 
         style={{ y: useTransform(scrollYProgress, [0, 1], ['0%', '20%']) }} 
-        className="absolute inset-0 z-0 pointer-events-none opacity-20"
+        className="absolute inset-0 z-0 pointer-events-none opacity-30"
       >
         <img
-          src="/images/hero_bg_1780043969448.png"
-          alt="Vintage stock exchange"
-          className="w-full h-full object-cover object-center mix-blend-multiply grayscale"
+          src="/images/hero_man_bg.png"
+          alt="ESPS Capital Representative"
+          className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg" />
       </motion.div>

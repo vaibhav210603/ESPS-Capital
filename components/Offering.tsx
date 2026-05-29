@@ -14,7 +14,7 @@ const services = [
     description:
       "Whether you're a startup or an established business, we help secure the funding necessary for growth, expansion, or innovation. Our network of investors and financial institutions gives us the leverage to connect you with the right partners.",
     points: ['Main Board IPOs', 'QIPs and Rights Issues', 'Debt Offering'],
-    image: '/images/service_capital_1780044015943.png',
+    image: '/images/service_capital_formal_1780048874556.png',
   },
   {
     icon: GitMerge,
@@ -26,7 +26,7 @@ const services = [
       'Advisory for Takeover/Open Offers during M&A pursuits',
       'Capability enhancement through synergistic acquisitions',
     ],
-    image: '/images/service_ma_1780044034350.png',
+    image: '/images/service_ma_formal_1780048889525.png',
   },
   {
     icon: RefreshCw,
@@ -34,7 +34,7 @@ const services = [
     description:
       'In times of financial stress or strategic pivoting, our restructuring services help businesses realign their operations, optimize capital structures, and navigate the complexities of turnaround strategies.',
     points: [],
-    image: '/images/service_restructure_1780044052645.png',
+    image: '/images/service_restructure_formal_1780048916481.png',
   },
   {
     icon: Handshake,
@@ -42,7 +42,7 @@ const services = [
     description:
       'We assist businesses in forging strong, strategic partnerships that fuel growth, expand market reach, and enhance operational efficiencies.',
     points: [],
-    image: '/images/service_partner_1780044067868.png',
+    image: '/images/service_partner_formal_1780048932418.png',
   },
 ];
 
@@ -83,11 +83,11 @@ export default function Offering() {
               className="snap-center shrink-0 w-[85vw] md:w-[45vw] lg:w-[30vw] border border-rule group overflow-hidden bg-bg"
             >
               {/* Image Block */}
-              <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-rule bg-bg-deep filter grayscale group-hover:grayscale-0 transition-all duration-700">
+              <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-rule bg-bg-deep group-hover:scale-[1.02] transition-all duration-700">
                 <img
                   src={s.image}
                   alt={s.title}
-                  className="w-full h-full object-cover mix-blend-multiply group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover transition-transform duration-700"
                 />
                 <div className="absolute top-4 left-4 font-mono text-xs text-brand-red bg-bg px-3 py-1 border border-rule">
                   0{i + 1}
