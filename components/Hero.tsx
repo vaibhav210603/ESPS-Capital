@@ -1,41 +1,16 @@
 'use client';
 
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
-import { LogoMark } from './Logo';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end start'],
-  });
-  
-  // Faint parallax logo watermark
-  const logoY = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
-  const logoRotate = useTransform(scrollYProgress, [0, 1], [0, 15]);
-
   return (
     <section
       id="home"
-      ref={ref}
-      className="relative min-h-[100svh] w-full flex flex-col justify-between overflow-hidden bg-bg pt-28 pb-12"
+      className="relative min-h-[100svh] w-full flex flex-col justify-between bg-transparent pt-28 pb-12"
     >
-      {/* Hero Parallax Background Image */}
-      <motion.div 
-        style={{ y: useTransform(scrollYProgress, [0, 1], ['0%', '20%']) }} 
-        className="absolute inset-0 z-0 pointer-events-none opacity-30"
-      >
-        <img
-          src="/images/hero.png"
-          alt="ESPS Capital Representative"
-          className="w-full h-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg" />
-      </motion.div>
 
       {/* Top Meta Row */}
       <div className="relative z-10 w-full max-w-[90rem] mx-auto px-6 md:px-12 flex justify-between items-start font-mono text-[10px] md:text-xs uppercase tracking-[0.1em] text-muted">
@@ -44,6 +19,41 @@ export default function Hero() {
           Your Trusted Partner in Strategic Financial Advisory
         </div>
       </div>
+
+      {/* Rotating circular text — large, overlaps headline */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, rotate: 360 }}
+        transition={{
+          opacity: { duration: 1.5, delay: 0.6 },
+          rotate: { duration: 28, repeat: Infinity, ease: 'linear', delay: 0 },
+        }}
+        className="pointer-events-none absolute z-20"
+        style={{ top: '15%', right: '-8%', width: 580, height: 580 }}
+      >
+        <svg viewBox="0 0 580 580" width="580" height="580" aria-hidden>
+          <defs>
+            <path
+              id="rcp"
+              d="M 290,290 m -260,0 a 260,260 0 1,1 520,0 a 260,260 0 1,1 -520,0"
+            />
+          </defs>
+          <circle cx="290" cy="290" r="260" fill="none" stroke="#D32238" strokeWidth="1" opacity="0.3" />
+          <text
+            fontSize="13"
+            fontFamily="var(--font-inter), sans-serif"
+            letterSpacing="5.5"
+            fill="#D32238"
+            opacity="0.65"
+          >
+            <textPath href="#rcp">
+              KNOWLEDGE CREATES WEALTH · ESPS CAPITAL · STRATEGIC ADVISORY · FINANCIAL GROWTH ·
+            </textPath>
+          </text>
+          <circle cx="290" cy="290" r="5" fill="#D32238" opacity="0.55" />
+          <circle cx="290" cy="290" r="16" fill="none" stroke="#D32238" strokeWidth="0.8" strokeDasharray="3 6" opacity="0.35" />
+        </svg>
+      </motion.div>
 
       {/* Main Content */}
       <div className="relative z-10 w-full max-w-[90rem] mx-auto px-6 md:px-12 mt-16 mb-20">

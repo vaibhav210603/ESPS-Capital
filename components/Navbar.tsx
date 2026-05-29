@@ -27,12 +27,7 @@ export default function Navbar() {
   return (
     <header className="fixed top-0 w-full z-50">
       {/* Main nav */}
-      <div
-        className={`transition-all duration-500 ${scrolled
-            ? 'bg-bg/80 backdrop-blur-xl hairline-b'
-            : 'bg-transparent border-b border-transparent'
-          }`}
-      >
+      <div className="bg-bg hairline-b transition-all duration-500">
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <a href="#home" className="group flex items-center gap-3">
             <LogoMark size={48} className="shrink-0" />
