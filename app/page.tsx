@@ -16,37 +16,40 @@ export default function Home() {
       {/*
        * ── STICKY BACKGROUND WRAPPER ──────────────────────────────────────
        * The newspaper image is pinned (sticky top-0) inside this wrapper.
-       * Hero + Marquee content scrolls on top of it.
-       * Once the wrapper scrolls out of view, the sticky bg goes with it
-       * and all subsequent solid-background sections cover it naturally.
+       * Hero, Marquee strip, and About section all scroll over the same
+       * fixed background. Once the wrapper ends, solid sections cover it.
        * ────────────────────────────────────────────────────────────────── */}
       <div className="relative">
-        {/* Sticky background — stays fixed while Hero + Marquee scroll */}
+        {/* Sticky background — stays pinned while 3 sections scroll over it */}
         <div className="sticky top-0 h-[100svh] w-full overflow-hidden -z-10">
           <img
             src="/images/hero.png"
             alt=""
             className="w-full h-full object-cover object-center opacity-[0.28]"
           />
-          {/* Cream tint so text stays readable */}
-          <div className="absolute inset-0 bg-bg/50" />
-          {/* Subtle vignette at bottom */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg/80" />
+          {/* Cream tint for readability */}
+          <div className="absolute inset-0 bg-bg/55" />
+          {/* Soft vignette at the bottom edge */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-bg/70" />
         </div>
 
-        {/* Hero — transparent bg, sits over sticky */}
+        {/* 1. Hero — transparent, floats over sticky */}
         <div className="-mt-[100svh] relative z-10">
           <Hero />
         </div>
 
-        {/* Marquee — dark strip floats on top of sticky bg */}
+        {/* 2. Marquee strip — scrolls over sticky bg */}
         <div className="relative z-10">
           <Marquee />
         </div>
+
+        {/* 3. About — transparent bg, newspaper still shows through */}
+        <div className="relative z-10">
+          <About transparent />
+        </div>
       </div>
 
-      {/* ── Everything below has solid backgrounds ── */}
-      <About />
+      {/* ── Everything below: solid backgrounds cover the newspaper ── */}
       <Offering />
       <WhyDifferent />
       <EpathShala />

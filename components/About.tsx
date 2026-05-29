@@ -49,9 +49,9 @@ const stats = [
   { value: 360, suffix: '°', label: 'Advisory Coverage' },
 ];
 
-export default function About() {
+export default function About({ transparent = false }: { transparent?: boolean }) {
   return (
-    <SectionWrapper id="about" className="bg-bg relative px-6 md:px-12 py-[12vh]">
+    <SectionWrapper id="about" className={`${transparent ? 'bg-transparent' : 'bg-bg'} relative px-6 md:px-12 py-[12vh]`}>
       <div className="max-w-[90rem] mx-auto">
         <div className="grid md:grid-cols-2 gap-16 md:gap-24">
           

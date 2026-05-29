@@ -50,10 +50,10 @@ export default function WhyDifferent() {
               Why ESPS Capital is <span className="italic text-brand-red">Different</span>
             </Reveal>
             <Reveal as="div" delay={0.2} className="mt-8 space-y-6 text-lg text-ink-soft leading-relaxed font-sans">
-              <p>
+              <p className="text-justify">
                 At ESPS Capital, we are not just advisors—we are long-term partners committed to your success. We take the time to understand your business, your challenges, and your objectives, crafting solutions that go beyond traditional advisory services. Our client-first philosophy means we are always focused on delivering actionable, value-driven results.
               </p>
-              <p>
+              <p className="text-justify">
                 In today&rsquo;s ever-changing financial landscape, agility and insight are essential. With our vast network, forward-thinking strategies, and commitment to excellence, we ensure that your business is well-equipped to navigate challenges and seize new opportunities.
               </p>
             </Reveal>
