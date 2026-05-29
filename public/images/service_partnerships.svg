@@ -5,46 +5,68 @@
     <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
       <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1" />
     </pattern>
-    <linearGradient id="blueGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.8" />
-      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.3" />
+    <linearGradient id="leftArmGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#3b82f6" />
     </linearGradient>
-    <linearGradient id="blueGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.9" />
-      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.2" />
+    <linearGradient id="rightArmGrad" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#60a5fa" />
     </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#1e293b" flood-opacity="0.08" />
+    </filter>
   </defs>
-  <rect width="800" height="600" fill="url(#grid)" opacity="0.5" />
+  <rect width="800" height="600" fill="url(#grid)" opacity="0.4" />
 
-  <!-- Abstract minimalist partnership loops/rings -->
-  <g transform="translate(400, 300)">
-    <!-- Outer decorative dashed orbit -->
-    <circle cx="0" cy="0" r="180" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="8 8" opacity="0.4" />
-    
-    <!-- Left Partner Ring -->
-    <circle cx="-80" cy="0" r="110" fill="url(#blueGrad1)" stroke="#1e40af" stroke-width="1.5" />
-    
-    <!-- Right Partner Ring -->
-    <circle cx="80" cy="0" r="110" fill="url(#blueGrad2)" stroke="#2563eb" stroke-width="1.5" />
-    
-    <!-- Overlapping Intersection Highlights -->
-    <path d="M 0,-75 A 110,110 0 0,1 80,0 A 110,110 0 0,1 0,75 A 110,110 0 0,1 -80,0 A 110,110 0 0,1 0,-75 Z" 
-          fill="#eff6ff" fill-opacity="0.6" stroke="#3b82f6" stroke-width="2" />
-          
-    <!-- Core connecting nodes -->
-    <circle cx="-80" cy="0" r="6" fill="#1e3a8a" />
-    <circle cx="80" cy="0" r="6" fill="#2563eb" />
-    <circle cx="0" cy="0" r="8" fill="#3b82f6" />
-    
-    <!-- Connection lines -->
-    <line x1="-80" y1="0" x2="80" y2="0" stroke="#1e3a8a" stroke-width="1.5" stroke-dasharray="4 4" />
-    <line x1="0" y1="-75" x2="0" y2="75" stroke="#3b82f6" stroke-width="1" stroke-dasharray="2 2" />
+  <!-- Partnership circles/orbits background decoration -->
+  <g transform="translate(400, 300)" opacity="0.6">
+    <circle cx="0" cy="0" r="180" fill="none" stroke="#3b82f6" stroke-width="1" stroke-dasharray="8 8" opacity="0.3" />
+    <circle cx="0" cy="0" r="120" fill="none" stroke="#1e3a8a" stroke-width="1.5" opacity="0.2" />
+    <circle cx="0" cy="0" r="60" fill="none" stroke="#60a5fa" stroke-width="1" stroke-dasharray="4 4" opacity="0.4" />
+  </g>
 
-    <!-- Minimalist indicator dots representing strategic points -->
-    <circle cx="-135" cy="-80" r="4" fill="#3b82f6" />
-    <line x1="-135" y1="-80" x2="-80" y2="0" stroke="#94a3b8" stroke-width="0.75" />
+  <!-- Handshake Illustration in Premium Minimalist Vector Lines -->
+  <g transform="translate(400, 300)" filter="url(#cardShadow)">
     
-    <circle cx="135" cy="80" r="4" fill="#2563eb" />
-    <line x1="135" y1="80" x2="80" y2="0" stroke="#94a3b8" stroke-width="0.75" />
+    <!-- LEFT ARM & CUFF -->
+    <path d="M -260,-40 L -120,-40 C -110,-40 -100,-30 -100,-20 L -100,50 C -100,60 -110,70 -120,70 L -260,70" 
+          fill="url(#leftArmGrad)" stroke="#1e3a8a" stroke-width="2.5" />
+    <!-- White Cuff Line -->
+    <rect x="-100" y="-35" width="10" height="100" rx="3" fill="#ffffff" stroke="#1e40af" stroke-width="1.5" />
+    
+    <!-- RIGHT ARM & CUFF -->
+    <path d="M 260,30 L 120,30 C 110,30 100,20 100,10 L 100,-60 C 100,-70 110,-80 120,-80 L 260,-80" 
+          fill="url(#rightArmGrad)" stroke="#2563eb" stroke-width="2.5" />
+    <!-- White Cuff Line -->
+    <rect x="90" y="-75" width="10" height="100" rx="3" fill="#ffffff" stroke="#2563eb" stroke-width="1.5" />
+
+    <!-- HANDSHAKE (INTEGRATED GESTURE) -->
+    <!-- Left Hand Base -->
+    <path d="M -90,-20 Q -60,-20 -50,-10 Q -40,0 -50,15 L -80,35 Z" fill="#1e3a8a" opacity="0.85" />
+    
+    <!-- Right Hand Base -->
+    <path d="M 90,-40 Q 60,-40 50,-30 Q 40,-20 50,-5 L 80,-25 Z" fill="#2563eb" opacity="0.85" />
+    
+    <!-- Interlocking fingers / clasping hands -->
+    <!-- Left hand thumb -->
+    <path d="M -55,-25 C -45,-30 -30,-20 -35,-5 C -40,5 -50,-5 -55,-25 Z" fill="#3b82f6" stroke="#1e3a8a" stroke-width="2" />
+    <!-- Right hand thumb -->
+    <path d="M 55,-45 C 45,-50 30,-40 35,-25 C 40,-15 50,-25 55,-45 Z" fill="#60a5fa" stroke="#2563eb" stroke-width="2" />
+
+    <!-- Interlocked fingers -->
+    <rect x="-35" y="-12" width="70" height="16" rx="8" fill="#3b82f6" stroke="#1e3a8a" stroke-width="2" transform="rotate(15)" />
+    <rect x="-32" y="6" width="65" height="16" rx="8" fill="#3b82f6" stroke="#1e3a8a" stroke-width="2" transform="rotate(15)" />
+    <rect x="-29" y="24" width="60" height="16" rx="8" fill="#3b82f6" stroke="#1e3a8a" stroke-width="2" transform="rotate(15)" />
+    <rect x="-26" y="42" width="55" height="16" rx="8" fill="#3b82f6" stroke="#1e3a8a" stroke-width="2" transform="rotate(15)" />
+    
+    <!-- Floating network/connection node indicators (strategic synergy) -->
+    <circle cx="0" cy="15" r="8" fill="#2563eb" />
+    <circle cx="0" cy="15" r="16" fill="none" stroke="#2563eb" stroke-width="1.5" opacity="0.5" />
+    
+    <circle cx="-50" cy="-60" r="5" fill="#3b82f6" />
+    <circle cx="50" cy="70" r="5" fill="#1e3a8a" />
+    <line x1="-50" y1="-60" x2="-90" y2="-20" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 3" />
+    <line x1="50" y1="70" x2="90" y2="30" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="3 3" />
   </g>
 </svg>

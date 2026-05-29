@@ -26,7 +26,7 @@ const services = [
       'Advisory for Takeover/Open Offers during M&A pursuits',
       'Capability enhancement through synergistic acquisitions',
     ],
-    image: '/images/service_ma.png',
+    image: '/images/service_ma.svg',
   },
   {
     icon: RefreshCw,

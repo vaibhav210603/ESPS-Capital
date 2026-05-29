@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <!-- Subtle minimalist grid background -->
+  <rect width="800" height="600" fill="#f4f6f9" />
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1" />
+    </pattern>
+    <linearGradient id="primaryGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e3b8a" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <linearGradient id="secondaryGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.5" />
+    </linearGradient>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#93c5fd" stop-opacity="0.2" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="6" flood-color="#1e293b" flood-opacity="0.08" />
+    </filter>
+  </defs>
+  <rect width="800" height="600" fill="url(#grid)" opacity="0.4" />
+
+  <g transform="translate(100, 50)" filter="url(#shadow)">
+    <!-- Left Corporate Structure (Acquirer) -->
+    <g transform="translate(120, 100)">
+      <!-- Base Slab -->
+      <rect x="0" y="280" width="140" height="12" rx="4" fill="#1e3a8a" opacity="0.8" />
+      <!-- Building Block 1 -->
+      <rect x="15" y="60" width="110" height="220" rx="6" fill="url(#primaryGrad)" />
+      <!-- Windows Grid (Minimalist) -->
+      <rect x="35" y="85" width="20" height="35" rx="2" fill="#ffffff" opacity="0.15" />
+      <rect x="35" y="135" width="20" height="35" rx="2" fill="#ffffff" opacity="0.15" />
+      <rect x="35" y="185" width="20" height="35" rx="2" fill="#ffffff" opacity="0.15" />
+      
+      <rect x="85" y="85" width="20" height="35" rx="2" fill="#ffffff" opacity="0.15" />
+      <rect x="85" y="135" width="20" height="35" rx="2" fill="#ffffff" opacity="0.15" />
+      <rect x="85" y="185" width="20" height="35" rx="2" fill="#ffffff" opacity="0.15" />
+    </g>
+
+    <!-- Right Corporate Structure (Target / Joining entity) -->
+    <g transform="translate(340, 180)">
+      <!-- Base Slab -->
+      <rect x="0" y="200" width="140" height="12" rx="4" fill="#2563eb" opacity="0.8" />
+      <!-- Building Block 2 -->
+      <rect x="15" y="40" width="110" height="160" rx="6" fill="url(#secondaryGrad)" />
+      <!-- Windows Grid -->
+      <rect x="35" y="65" width="20" height="25" rx="2" fill="#ffffff" opacity="0.25" />
+      <rect x="35" y="105" width="20" height="25" rx="2" fill="#ffffff" opacity="0.25" />
+      <rect x="85" y="65" width="20" height="25" rx="2" fill="#ffffff" opacity="0.25" />
+      <rect x="85" y="105" width="20" height="25" rx="2" fill="#ffffff" opacity="0.25" />
+    </g>
+
+    <!-- Dynamic Merging/Acquisition Linkages & Arrows -->
+    <g>
+      <!-- Horizontal Flow arrow connecting the two -->
+      <path d="M 275,250 Q 330,220 385,250" fill="none" stroke="#2563eb" stroke-width="3" stroke-dasharray="6 6" />
+      <!-- Forward Arrowhead -->
+      <path d="M 380,242 L 390,252 L 378,258 Z" fill="#2563eb" />
+      
+      <!-- Synergy Rings -->
+      <circle cx="300" cy="245" r="95" fill="none" stroke="#3b82f6" stroke-width="1.5" opacity="0.25" />
+      <circle cx="300" cy="245" r="145" fill="none" stroke="#1e3a8a" stroke-width="1" stroke-dasharray="4 4" opacity="0.2" />
+
+      <!-- Minimalist nodes representing successful transaction/capital convergence -->
+      <circle cx="205" cy="245" r="7" fill="#3b82f6" />
+      <circle cx="395" cy="245" r="7" fill="#60a5fa" />
+      <circle cx="300" cy="150" r="9" fill="#1e3a8a" />
+      <line x1="205" y1="245" x2="300" y2="150" stroke="#1e3a8a" stroke-width="1.5" opacity="0.4" />
+      <line x1="395" y1="245" x2="300" y2="150" stroke="#2563eb" stroke-width="1.5" opacity="0.4" />
+      
+      <!-- Growth vector line showing upward direction -->
+      <path d="M 150,380 L 250,280 L 350,220 L 480,120" fill="none" stroke="#3b82f6" stroke-width="2.5" />
+      <circle cx="480" cy="120" r="5" fill="#3b82f6" />
+    </g>
+  </g>
+</svg>
