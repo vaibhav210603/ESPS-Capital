@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="100%" height="100%">
+  <!-- Subtle minimalist grid background -->
+  <rect width="800" height="600" fill="#f4f6f9" />
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#e2e8f0" stroke-width="1" />
+    </pattern>
+    <linearGradient id="blueGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.3" />
+    </linearGradient>
+    <linearGradient id="blueGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#60a5fa" stop-opacity="0.2" />
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#grid)" opacity="0.5" />
+
+  <!-- Abstract minimalist partnership loops/rings -->
+  <g transform="translate(400, 300)">
+    <!-- Outer decorative dashed orbit -->
+    <circle cx="0" cy="0" r="180" fill="none" stroke="#94a3b8" stroke-width="1" stroke-dasharray="8 8" opacity="0.4" />
+    
+    <!-- Left Partner Ring -->
+    <circle cx="-80" cy="0" r="110" fill="url(#blueGrad1)" stroke="#1e40af" stroke-width="1.5" />
+    
+    <!-- Right Partner Ring -->
+    <circle cx="80" cy="0" r="110" fill="url(#blueGrad2)" stroke="#2563eb" stroke-width="1.5" />
+    
+    <!-- Overlapping Intersection Highlights -->
+    <path d="M 0,-75 A 110,110 0 0,1 80,0 A 110,110 0 0,1 0,75 A 110,110 0 0,1 -80,0 A 110,110 0 0,1 0,-75 Z" 
+          fill="#eff6ff" fill-opacity="0.6" stroke="#3b82f6" stroke-width="2" />
+          
+    <!-- Core connecting nodes -->
+    <circle cx="-80" cy="0" r="6" fill="#1e3a8a" />
+    <circle cx="80" cy="0" r="6" fill="#2563eb" />
+    <circle cx="0" cy="0" r="8" fill="#3b82f6" />
+    
+    <!-- Connection lines -->
+    <line x1="-80" y1="0" x2="80" y2="0" stroke="#1e3a8a" stroke-width="1.5" stroke-dasharray="4 4" />
+    <line x1="0" y1="-75" x2="0" y2="75" stroke="#3b82f6" stroke-width="1" stroke-dasharray="2 2" />
+
+    <!-- Minimalist indicator dots representing strategic points -->
+    <circle cx="-135" cy="-80" r="4" fill="#3b82f6" />
+    <line x1="-135" y1="-80" x2="-80" y2="0" stroke="#94a3b8" stroke-width="0.75" />
+    
+    <circle cx="135" cy="80" r="4" fill="#2563eb" />
+    <line x1="135" y1="80" x2="80" y2="0" stroke="#94a3b8" stroke-width="0.75" />
+  </g>
+</svg>

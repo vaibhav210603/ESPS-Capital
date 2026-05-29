@@ -14,7 +14,7 @@ const services = [
     description:
       "Whether you're a startup or an established business, we help secure the funding necessary for growth, expansion, or innovation. Our network of investors and financial institutions gives us the leverage to connect you with the right partners.",
     points: ['Main Board IPOs', 'QIPs and Rights Issues', 'Debt Offering'],
-    image: '/images/service_capital_formal_1780048874556.png',
+    image: '/images/service_capital_raising.png',
   },
   {
     icon: GitMerge,
@@ -26,7 +26,7 @@ const services = [
       'Advisory for Takeover/Open Offers during M&A pursuits',
       'Capability enhancement through synergistic acquisitions',
     ],
-    image: '/images/service_ma_formal_1780048889525.png',
+    image: '/images/service_ma.png',
   },
   {
     icon: RefreshCw,
@@ -34,7 +34,7 @@ const services = [
     description:
       'In times of financial stress or strategic pivoting, our restructuring services help businesses realign their operations, optimize capital structures, and navigate the complexities of turnaround strategies.',
     points: [],
-    image: '/images/service_restructure_formal_1780048916481.png',
+    image: '/images/service_restructuring.png',
   },
   {
     icon: Handshake,
@@ -42,7 +42,7 @@ const services = [
     description:
       'We assist businesses in forging strong, strategic partnerships that fuel growth, expand market reach, and enhance operational efficiencies.',
     points: [],
-    image: '/images/service_partner_formal_1780048932418.png',
+    image: '/images/service_partnerships.svg',
   },
 ];
 
