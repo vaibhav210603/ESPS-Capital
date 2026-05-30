@@ -169,14 +169,39 @@ export default function Contact() {
           </div>
 
           {/* Right Column: Interactive Inquiry Desk Card */}
-          <div className="lg:col-span-7 w-full">
+          <div className="lg:col-span-7 w-full relative">
+            
+            {/* Jaw-dropping ambient glow circles behind the card */}
+            <motion.div
+              animate={{ 
+                scale: [1, 1.15, 1],
+                x: [-15, 15, -15],
+                y: [-10, 10, -10]
+              }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -left-20 -top-20 w-72 h-72 rounded-full bg-brand-red/10 blur-[80px] pointer-events-none z-0"
+            />
+            <motion.div
+              animate={{ 
+                scale: [1.1, 0.9, 1.1],
+                x: [20, -20, 20],
+                y: [15, -15, 15]
+              }}
+              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-yellow-600/5 blur-[90px] pointer-events-none z-0"
+            />
+
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: EASE }}
-              className="bg-bg-deep/30 backdrop-blur-md border border-rule rounded-3xl p-6 md:p-10 shadow-sm relative overflow-hidden"
+              whileHover={{ y: -4 }}
+              className="relative z-10 bg-bg-deep/40 backdrop-blur-xl border border-rule hover:border-brand-red/40 rounded-3xl p-6 md:p-10 shadow-sm hover:shadow-[0_20px_50px_-10px_rgba(211,34,56,0.12)] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-hidden"
             >
+              {/* Premium Top Border Highlight */}
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-red/50 to-transparent pointer-events-none" />
+
               {/* Light glow pattern inside card */}
               <div className="absolute -right-20 -top-20 w-60 h-60 rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
               

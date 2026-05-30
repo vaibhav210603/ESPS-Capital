@@ -84,27 +84,22 @@ export default function About({ transparent = false }: { transparent?: boolean }
               ))}
             </div>
 
-            {/* Editorial Video */}
+            {/* Editorial Image Placeholder */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: EASE }}
-              className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-rule bg-bg-deep"
+              className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-rule bg-bg-deep group/img cursor-pointer"
             >
-              <video
-                src="/about_video.mp4"
-                poster="/about_video_poster.webp"
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="none"
-                className="w-full h-full object-cover opacity-75"
+              <motion.img
+                src="/about_video_poster.webp"
+                alt="ESPS Capital Head office"
+                className="w-full h-full object-cover opacity-75 group-hover/img:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
               />
 
-              {/* Black gradient wash — softens the video so it reads as a subtle backdrop */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/50 pointer-events-none" />
+              {/* Black gradient wash — softens the image backdrop */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 pointer-events-none group-hover/img:opacity-85 transition-opacity duration-500" />
 
               {/* Text overlay */}
               <motion.div
