@@ -100,8 +100,27 @@ export default function About({ transparent = false }: { transparent?: boolean }
                 muted
                 playsInline
                 preload="none"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover opacity-75"
               />
+
+              {/* Black gradient wash — softens the video so it reads as a subtle backdrop */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/70 to-black/50 pointer-events-none" />
+
+              {/* Text overlay */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
+                className="absolute inset-x-0 bottom-0 p-7 md:p-9"
+              >
+                <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/55 mb-2">
+                  ESPS Capital
+                </div>
+                <h3 className="text-2xl md:text-4xl font-serif italic text-white leading-tight">
+                  Knowledge Creates Wealth
+                </h3>
+              </motion.div>
             </motion.div>
           </div>
 

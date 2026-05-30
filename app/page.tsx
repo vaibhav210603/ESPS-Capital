@@ -23,7 +23,7 @@ export default function Home() {
         {/* Sticky background — stays pinned while 3 sections scroll over it */}
         <div className="sticky top-0 h-[100svh] w-full overflow-hidden -z-10">
           <img
-            src="/images/hero.webp"
+            src="/images/hero_new.png"
             alt=""
             className="w-full h-full object-cover object-center opacity-[0.28]"
           />

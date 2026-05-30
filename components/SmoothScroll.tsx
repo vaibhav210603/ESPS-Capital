@@ -11,6 +11,9 @@ export default function SmoothScroll() {
       smoothWheel: true,
     });
 
+    // Expose for programmatic scroll from other components (e.g. Offering dropdown).
+    (window as unknown as { lenis?: Lenis }).lenis = lenis;
+
     let rafId: number;
     function raf(time: number) {
       lenis.raf(time);
@@ -37,6 +40,7 @@ export default function SmoothScroll() {
     return () => {
       cancelAnimationFrame(rafId);
       document.removeEventListener('click', onClick);
+      delete (window as unknown as { lenis?: Lenis }).lenis;
       lenis.destroy();
     };
   }, []);

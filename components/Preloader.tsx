@@ -14,7 +14,7 @@ import { useEffect, useRef, useState } from 'react';
 // Assets that visibly matter on first paint. Kept in sync with the
 // references in page.tsx / globals.css / the section components.
 const CRITICAL_ASSETS = [
-  '/images/hero.webp',
+  '/images/hero_new.png',
   '/images/paper_texture.webp',
   '/images/service_capital_raising.webp',
   '/images/service_restructuring.webp',
