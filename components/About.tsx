@@ -50,6 +50,24 @@ const stats = [
 ];
 
 export default function About({ transparent = false }: { transparent?: boolean }) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    
+    // Programmatic compliance to force autoplay on mobile Safari/Chrome
+    video.muted = true;
+    video.playsInline = true;
+    
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((err) => {
+        console.warn("Video autoplay prevented:", err);
+      });
+    }
+  }, []);
+
   return (
     <SectionWrapper id="about" className={`${transparent ? 'bg-transparent' : 'bg-bg'} relative px-6 md:px-12 py-[12vh]`}>
       <div className="max-w-[90rem] mx-auto">
@@ -84,22 +102,27 @@ export default function About({ transparent = false }: { transparent?: boolean }
               ))}
             </div>
 
-            {/* Editorial Image Placeholder */}
+            {/* Editorial Video */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: EASE }}
-              className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-rule bg-bg-deep group/img cursor-pointer"
+              className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-rule bg-bg-deep group/video cursor-pointer"
             >
-              <motion.img
-                src="/about_video_poster.webp"
-                alt="ESPS Capital Head office"
-                className="w-full h-full object-cover opacity-75 group-hover/img:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              <video
+                ref={videoRef}
+                src="/about_video.mp4"
+                poster="/about_video_poster.webp"
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="w-full h-full object-cover opacity-75 group-hover/video:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
               />
 
-              {/* Black gradient wash — softens the image backdrop */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 pointer-events-none group-hover/img:opacity-85 transition-opacity duration-500" />
+              {/* Black gradient wash — softens the video backdrop */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 pointer-events-none" />
 
               {/* Text overlay */}
               <motion.div
