@@ -77,20 +77,20 @@ export default function Contact() {
   };
 
   const inputClasses = (hasError: boolean) => `
-    w-full h-12 bg-white/95 backdrop-blur-sm border rounded-xl px-4 text-sm text-ink placeholder-muted/60 
+    w-full h-12 bg-[#0c0d12]/90 border rounded-xl px-4 text-sm text-white placeholder-white/20 
     focus:outline-none focus:ring-2 transition-all duration-300 font-sans block
     \${hasError 
       ? 'border-brand-red focus:border-brand-red focus:ring-brand-red/10' 
-      : 'border-rule focus:border-ink focus:ring-ink/10 hover:border-muted'
+      : 'border-white/[0.08] focus:border-brand-red focus:ring-brand-red/10 hover:border-white/20'
     }
   `;
 
   const textareaClasses = (hasError: boolean) => `
-    w-full min-h-[120px] bg-white/95 backdrop-blur-sm border rounded-xl px-4 py-3.5 text-sm text-ink placeholder-muted/60 
+    w-full min-h-[120px] bg-[#0c0d12]/90 border rounded-xl px-4 py-3.5 text-sm text-white placeholder-white/20 
     focus:outline-none focus:ring-2 transition-all duration-300 font-sans block resize-none
     \${hasError 
       ? 'border-brand-red focus:border-brand-red focus:ring-brand-red/10' 
-      : 'border-rule focus:border-ink focus:ring-ink/10 hover:border-muted'
+      : 'border-white/[0.08] focus:border-brand-red focus:ring-brand-red/10 hover:border-white/20'
     }
   `;
 
@@ -179,7 +179,7 @@ export default function Contact() {
                 y: [-10, 10, -10]
               }}
               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute -left-20 -top-20 w-72 h-72 rounded-full bg-brand-red/10 blur-[80px] pointer-events-none z-0"
+              className="absolute -left-20 -top-20 w-72 h-72 rounded-full bg-brand-red/20 blur-[80px] pointer-events-none z-0"
             />
             <motion.div
               animate={{ 
@@ -188,7 +188,7 @@ export default function Contact() {
                 y: [15, -15, 15]
               }}
               transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-yellow-600/5 blur-[90px] pointer-events-none z-0"
+              className="absolute -right-20 -bottom-20 w-80 h-80 rounded-full bg-brand-red/8 blur-[90px] pointer-events-none z-0"
             />
 
             <motion.div 
@@ -197,10 +197,10 @@ export default function Contact() {
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: EASE }}
               whileHover={{ y: -4 }}
-              className="relative z-10 bg-bg-deep/40 backdrop-blur-xl border border-rule hover:border-brand-red/40 rounded-3xl p-6 md:p-10 shadow-sm hover:shadow-[0_20px_50px_-10px_rgba(211,34,56,0.12)] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-hidden"
+              className="relative z-10 bg-gradient-to-br from-[#0c0d12]/98 via-[#14151f]/96 to-[#08080c]/98 border border-white/[0.08] hover:border-brand-red/40 rounded-3xl p-6 md:p-10 shadow-[0_30px_70px_-15px_rgba(0,0,0,0.65)] hover:shadow-[0_30px_80px_-10px_rgba(211,34,56,0.18)] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] overflow-hidden"
             >
               {/* Premium Top Border Highlight */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-red/50 to-transparent pointer-events-none" />
+              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-brand-red to-transparent pointer-events-none" />
 
               {/* Light glow pattern inside card */}
               <div className="absolute -right-20 -top-20 w-60 h-60 rounded-full bg-brand-red/5 blur-3xl pointer-events-none" />
@@ -217,7 +217,7 @@ export default function Contact() {
                     noValidate
                   >
                     <div className="mb-8">
-                      <span className="block font-mono text-[9px] uppercase tracking-[0.1em] text-muted mb-3 text-left">
+                      <span className="block font-mono text-[9px] uppercase tracking-[0.1em] text-white/55 mb-3 text-left">
                         Select Advisory Area
                       </span>
                       <div className="flex flex-wrap gap-2">
@@ -228,14 +228,14 @@ export default function Contact() {
                             onClick={() => setService(s.id)}
                             className={`relative px-4 py-2 rounded-full text-xs font-mono border transition-all duration-300 \${
                               service === s.id
-                                ? 'border-brand-red text-brand-red bg-brand-red/5'
-                                : 'border-rule text-ink-soft hover:border-ink hover:text-ink'
+                                ? 'border-brand-red text-brand-red bg-brand-red/10'
+                                : 'border-white/[0.08] text-white/60 hover:border-white/20 hover:text-white bg-white/[0.02]'
                             }`}
                           >
                             {service === s.id && (
                               <motion.span
                                 layoutId="activeServiceGlow"
-                                className="absolute inset-0 rounded-full border border-brand-red bg-brand-red/5"
+                                className="absolute inset-0 rounded-full border border-brand-red bg-brand-red/10"
                                 transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                               />
                             )}
@@ -247,7 +247,7 @@ export default function Contact() {
 
                     <div className="grid md:grid-cols-2 gap-5 mb-5">
                       <div>
-                        <label className="block font-mono text-[9px] uppercase tracking-wider text-muted mb-2 text-left">Your Name *</label>
+                        <label className="block font-mono text-[9px] uppercase tracking-wider text-white/55 mb-2 text-left">Your Name *</label>
                         <input
                           type="text"
                           value={name}
@@ -273,7 +273,7 @@ export default function Contact() {
                       </div>
 
                       <div>
-                        <label className="block font-mono text-[9px] uppercase tracking-wider text-muted mb-2 text-left">Corporate Email *</label>
+                        <label className="block font-mono text-[9px] uppercase tracking-wider text-white/55 mb-2 text-left">Corporate Email *</label>
                         <input
                           type="email"
                           value={email}
@@ -301,7 +301,7 @@ export default function Contact() {
 
                     <div className="grid md:grid-cols-2 gap-5 mb-5">
                       <div>
-                        <label className="block font-mono text-[9px] uppercase tracking-wider text-muted mb-2 text-left">Company Name</label>
+                        <label className="block font-mono text-[9px] uppercase tracking-wider text-white/55 mb-2 text-left">Company Name</label>
                         <input
                           type="text"
                           value={company}
@@ -312,7 +312,7 @@ export default function Contact() {
                       </div>
 
                       <div>
-                        <label className="block font-mono text-[9px] uppercase tracking-wider text-muted mb-2 text-left">Phone Number</label>
+                        <label className="block font-mono text-[9px] uppercase tracking-wider text-white/55 mb-2 text-left">Phone Number</label>
                         <input
                           type="tel"
                           value={phone}
@@ -324,7 +324,7 @@ export default function Contact() {
                     </div>
 
                     <div className="mb-8">
-                      <label className="block font-mono text-[9px] uppercase tracking-wider text-muted mb-2 text-left">Briefly describe your goals *</label>
+                      <label className="block font-mono text-[9px] uppercase tracking-wider text-white/55 mb-2 text-left">Briefly describe your goals *</label>
                       <textarea
                         value={message}
                         onChange={(e) => {
@@ -352,7 +352,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className="w-full relative flex items-center justify-center gap-2 rounded-xl bg-ink text-bg font-sans font-medium text-sm py-4 px-6 overflow-hidden group hover:bg-brand-red transition-colors duration-500 disabled:opacity-70"
+                      className="w-full relative flex items-center justify-center gap-2 rounded-xl bg-white text-[#0c0d12] font-sans font-bold text-sm py-4 px-6 overflow-hidden group hover:bg-brand-red hover:text-white transition-all duration-500 disabled:opacity-50"
                     >
                       {isSubmitting ? (
                         <span className="flex items-center gap-2.5 font-mono text-[11px] uppercase tracking-wider">
@@ -406,15 +406,15 @@ export default function Contact() {
                       </div>
                     </div>
 
-                    <h3 className="font-serif text-2xl md:text-3xl text-ink mb-3">Transmission Secured</h3>
-                    <p className="text-sm text-ink-soft max-w-md mx-auto mb-8 font-sans leading-relaxed">
-                      Thank you, <strong className="text-ink">{name}</strong>. Your advisory request for <strong className="text-ink">{SERVICES.find(s => s.id === service)?.label}</strong> has been logged. Our partnership desk will reach out within 24 business hours.
+                    <h3 className="font-serif text-2xl md:text-3xl text-white mb-3">Transmission Secured</h3>
+                    <p className="text-sm text-white/70 max-w-md mx-auto mb-8 font-sans leading-relaxed">
+                      Thank you, <strong className="text-white">{name}</strong>. Your advisory request for <strong className="text-brand-red">{SERVICES.find(s => s.id === service)?.label}</strong> has been logged. Our partnership desk will reach out within 24 business hours.
                     </p>
                     
                     <button
                       type="button"
                       onClick={resetForm}
-                      className="inline-flex items-center gap-2 rounded-full border border-rule hover:border-ink hover:text-ink text-muted font-sans text-xs px-6 py-3 transition-colors duration-300"
+                      className="inline-flex items-center gap-2 rounded-full border border-white/10 hover:border-brand-red hover:text-brand-red text-white/55 font-sans text-xs px-6 py-3 transition-colors duration-300"
                     >
                       Submit another inquiry
                     </button>
