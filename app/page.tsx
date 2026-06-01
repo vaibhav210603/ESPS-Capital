@@ -5,6 +5,7 @@ import About from '@/components/About';
 import Offering from '@/components/Offering';
 import WhyDifferent from '@/components/WhyDifferent';
 import EpathShala from '@/components/EpathShala';
+import Blogs from '@/components/Blogs';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 
@@ -53,6 +54,7 @@ export default function Home() {
       <Offering />
       <WhyDifferent />
       <EpathShala />
+      <Blogs />
       <Contact />
       <Footer />
     </main>
