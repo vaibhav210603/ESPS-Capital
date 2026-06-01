@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Calendar, Tag } from 'lucide-react';
+import { ArrowUpRight, Calendar } from 'lucide-react';
+import Link from 'next/link';
 import SectionWrapper from './SectionWrapper';
 import { Reveal } from './Reveal';
 
@@ -160,6 +161,7 @@ function GoldDropChart() {
 const blogs = [
   {
     id: 1,
+    slug: 'india-forex-reserves-all-time-high',
     category: 'ESPS Academy',
     title: "Wow Moment...India's Forex Reserves rose to USD 513.25B for the first time",
     date: 'July 11, 2020',
@@ -170,6 +172,7 @@ const blogs = [
   },
   {
     id: 2,
+    slug: 'gold-heading-towards-lifetime-high',
     category: 'Market Insights',
     title: 'Is GOLD Heading Towards Life Time High?',
     date: 'June 30, 2020',
@@ -180,6 +183,7 @@ const blogs = [
   },
   {
     id: 3,
+    slug: 'mahindra-mahindra-quarterly-outlook',
     category: 'Stock Analysis',
     title: 'Mahindra & Mahindra Quarterly Outlook',
     date: 'June 23, 2020',
@@ -190,6 +194,7 @@ const blogs = [
   },
   {
     id: 4,
+    slug: 'gold-slips-as-dollar-gains',
     category: 'Commodity Watch',
     title: 'Gold Slips as Dollar Gains',
     date: 'October 28, 2020',
@@ -232,13 +237,14 @@ export default function Blogs() {
           {blogs.map((post, i) => {
             const Visual = post.visual;
             return (
-              <motion.article
+              <motion.div
                 key={post.id}
                 initial={{ opacity: 0, y: 36 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.7, delay: i * 0.09, ease: EASE }}
-                className="group flex flex-col rounded-3xl border border-rule bg-bg-deep/60 overflow-hidden hover:border-brand-red/50 hover:shadow-[0_20px_60px_-12px_rgba(200,32,62,0.15)] transition-all duration-500"
+              >
+              <Link href={`/blogs/${post.slug}`} className="group flex flex-col rounded-3xl border border-rule bg-bg-deep/60 overflow-hidden hover:border-brand-red/50 hover:shadow-[0_20px_60px_-12px_rgba(200,32,62,0.15)] transition-all duration-500 h-full"
               >
                 {/* Chart visual */}
                 <div className="relative w-full h-44 overflow-hidden bg-[#0a0a14] shrink-0">
@@ -283,7 +289,8 @@ export default function Blogs() {
                     <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" strokeWidth={2} />
                   </div>
                 </div>
-              </motion.article>
+              </Link>
+              </motion.div>
             );
           })}
         </div>
