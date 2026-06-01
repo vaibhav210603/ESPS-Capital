@@ -326,6 +326,21 @@ function DesktopDropdown({
                       </motion.li>
                     ))}
                   </ul>
+
+                  {/* CTA */}
+                  <motion.button
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.48, duration: 0.45, ease: EASE }}
+                    onClick={() => {
+                      window.dispatchEvent(new CustomEvent('select-service', { detail: { serviceId: active.id } }));
+                      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="mt-10 inline-flex items-center gap-2.5 rounded-full bg-brand-red px-7 py-3.5 font-sans text-sm font-semibold text-white hover:bg-brand-red/90 transition-all duration-300 group/cta"
+                  >
+                    Request {active.title} Advisory
+                    <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" strokeWidth={2} />
+                  </motion.button>
                 </div>
               </motion.div>
             </AnimatePresence>
@@ -456,6 +471,22 @@ function ExpandedCard({
               </motion.li>
             ))}
           </ul>
+
+          {/* CTA */}
+          <motion.button
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.35, duration: 0.4, ease: EASE }}
+            onClick={() => {
+              onClose();
+              window.dispatchEvent(new CustomEvent('select-service', { detail: { serviceId: offering.id } }));
+              setTimeout(() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' }), 80);
+            }}
+            className="mt-8 w-full flex items-center justify-center gap-2 rounded-xl bg-brand-red py-3.5 px-6 font-sans text-sm font-semibold text-white hover:bg-brand-red/90 transition-all duration-300 group/cta"
+          >
+            Inquire About {offering.title}
+            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover/cta:translate-x-0.5 group-hover/cta:-translate-y-0.5" strokeWidth={2} />
+          </motion.button>
         </div>
       </motion.div>
     </div>

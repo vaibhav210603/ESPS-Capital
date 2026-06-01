@@ -73,8 +73,8 @@ export default function EpathShala() {
             className="relative w-full aspect-[3/4] border border-white/10 overflow-hidden rounded-xl"
           >
             <img
-              src="/images/academy_formal.webp"
-              alt="Modern financial academy"
+              src="/images/epathshala_illustration.svg"
+              alt="E-पाठ Shala financial learning platform"
               className="w-full h-full object-cover"
             />
           </motion.div>

@@ -124,17 +124,17 @@ function PillarCard({ p, index, yTransform }: { p: typeof pillars[0]; index: num
       viewport={{ once: true, margin: '-50px' }}
       transition={{ delay: index * 0.12, duration: 0.7, ease: EASE }}
       data-cursor="brand"
-      className="group relative border border-rule bg-bg/80 backdrop-blur-sm rounded-3xl p-8 flex flex-col justify-between min-h-[300px] overflow-hidden cursor-pointer hover:border-brand-red transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] shadow-sm hover:shadow-lg"
+      className="group relative border border-rule bg-bg/80 backdrop-blur-sm rounded-3xl p-8 flex flex-col justify-between h-[300px] sm:h-[320px] overflow-hidden cursor-pointer hover:border-brand-red transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] shadow-sm hover:shadow-lg"
     >
-      {/* Abstract Background Image with transition */}
+      {/* Abstract Background Image — visible by default on mobile, hover-only on desktop */}
       <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl pointer-events-none">
         <motion.img
           src={p.image}
           alt=""
-          className="w-full h-full object-cover opacity-0 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
+          className="w-full h-full object-cover opacity-70 scale-105 group-hover:opacity-90 group-hover:scale-105 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
         />
-        {/* Ambient overlay to protect text contrast on hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-bg/95 via-bg/40 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+        {/* Overlay — always visible, strengthens on hover */}
+        <div className="absolute inset-0 bg-gradient-to-t from-bg/95 via-bg/50 to-bg/10 opacity-100 transition-opacity duration-700" />
       </div>
 
       {/* Content Layers */}

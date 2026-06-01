@@ -1,8 +1,8 @@
 'use client';
 
-import { motion, AnimatePresence, useMotionValue, useSpring, useMotionTemplate } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, ArrowUpRight, Send } from 'lucide-react';
-import { useState, FormEvent, useRef } from 'react';
+import { useState, FormEvent, useRef, useEffect } from 'react';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -17,18 +17,20 @@ const SERVICES = [
 /* ── mouse-tracked glow on the card ─────────────────────────────────────── */
 function GlowCard({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDivElement>(null);
-  const mx = useMotionValue(0);
-  const my = useMotionValue(0);
-  const sx = useSpring(mx, { stiffness: 200, damping: 30 });
-  const sy = useSpring(my, { stiffness: 200, damping: 30 });
+  const glowRef = useRef<HTMLDivElement>(null);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = ref.current?.getBoundingClientRect();
-    if (!rect) return;
-    mx.set(((e.clientX - rect.left) / rect.width) * 100);
-    my.set(((e.clientY - rect.top) / rect.height) * 100);
+    const glow = glowRef.current;
+    if (!rect || !glow) return;
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+    glow.style.background = `radial-gradient(340px circle at ${x}% ${y}%, rgba(211,34,56,0.22) 0%, transparent 65%)`;
   };
-  const handleMouseLeave = () => { mx.set(50); my.set(50); };
+  const handleMouseLeave = () => {
+    if (glowRef.current)
+      glowRef.current.style.background = 'radial-gradient(340px circle at 50% 50%, rgba(211,34,56,0.08) 0%, transparent 65%)';
+  };
 
   return (
     <motion.div
@@ -39,18 +41,13 @@ function GlowCard({ children }: { children: React.ReactNode }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.9, ease: EASE }}
-      className="relative rounded-[2rem] overflow-hidden"
+      className="relative rounded-[2rem] overflow-hidden bg-[#0a0a0d]"
     >
-      {/* Mouse-tracked inner glow */}
-      <motion.div
-        style={{ left: typeof sx.get === 'function' ? undefined : '50%', top: typeof sy.get === 'function' ? undefined : '50%' }}
-        className="pointer-events-none absolute -inset-px rounded-[2rem] opacity-0 hover:opacity-100 transition-opacity duration-500"
-      />
-      <motion.div
-        style={{
-          background: `radial-gradient(320px circle at ${sx}% ${sy}%, rgba(211,34,56,0.18) 0%, transparent 65%)`,
-        }}
-        className="pointer-events-none absolute inset-0 rounded-[2rem] z-0"
+      {/* Mouse-tracked spotlight glow — mutated directly to avoid setState-in-render */}
+      <div
+        ref={glowRef}
+        className="pointer-events-none absolute inset-0 rounded-[2rem] z-0 transition-[background] duration-300"
+        style={{ background: 'radial-gradient(340px circle at 50% 50%, rgba(211,34,56,0.08) 0%, transparent 65%)' }}
       />
       {children}
     </motion.div>
@@ -67,6 +64,17 @@ export default function Contact() {
   const [errors, setErrors]       = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted]   = useState(false);
+  const [submitError, setSubmitError]   = useState('');
+
+  // Listen for service pre-selection dispatched from the Offering section
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const { serviceId } = (e as CustomEvent<{ serviceId: string }>).detail;
+      if (SERVICES.find(s => s.id === serviceId)) setService(serviceId);
+    };
+    window.addEventListener('select-service', handler);
+    return () => window.removeEventListener('select-service', handler);
+  }, []);
 
   const validate = () => {
     const e: Record<string, string> = {};
@@ -77,16 +85,32 @@ export default function Contact() {
     return Object.keys(e).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
     setIsSubmitting(true);
-    setTimeout(() => { setIsSubmitting(false); setIsSubmitted(true); }, 1800);
+    setSubmitError('');
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          service: SERVICES.find(s => s.id === service)?.label ?? service,
+          name, email, company, phone, message,
+        }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      setIsSubmitted(true);
+    } catch {
+      setSubmitError('Something went wrong. Please try again or email us directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const resetForm = () => {
     setName(''); setEmail(''); setCompany(''); setPhone(''); setMessage('');
-    setService('debt-syndication'); setErrors({}); setIsSubmitted(false);
+    setService('debt-syndication'); setErrors({}); setIsSubmitted(false); setSubmitError('');
   };
 
   const field = (err: boolean) =>
@@ -110,34 +134,8 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative bg-[#070709] px-6 md:px-12 py-[14vh] overflow-hidden"
+      className="relative bg-bg px-6 md:px-12 py-[14vh] overflow-hidden"
     >
-      {/* ── Aurora orbs ─────────────────────────────────────────────────── */}
-      <motion.div
-        animate={{ scale: [1, 1.18, 1], x: [-30, 30, -30], y: [-20, 20, -20] }}
-        transition={{ duration: 14, repeat: Infinity, ease: 'easeInOut' }}
-        className="absolute -left-40 top-0 w-[600px] h-[600px] rounded-full bg-brand-red/[0.14] blur-[120px] pointer-events-none"
-      />
-      <motion.div
-        animate={{ scale: [1.1, 0.88, 1.1], x: [25, -25, 25], y: [20, -20, 20] }}
-        transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut', delay: 2 }}
-        className="absolute -right-40 bottom-0 w-[700px] h-[700px] rounded-full bg-[#3d0010]/40 blur-[140px] pointer-events-none"
-      />
-      <motion.div
-        animate={{ scale: [0.9, 1.2, 0.9], y: [-30, 30, -30] }}
-        transition={{ duration: 22, repeat: Infinity, ease: 'easeInOut', delay: 5 }}
-        className="absolute left-1/2 -translate-x-1/2 top-1/3 w-[400px] h-[400px] rounded-full bg-brand-red/[0.07] blur-[100px] pointer-events-none"
-      />
-
-      {/* ── Dot-grid texture overlay ─────────────────────────────────────── */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-[0.25]"
-        style={{
-          backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.18) 1px, transparent 1px)',
-          backgroundSize: '36px 36px',
-        }}
-      />
-
       {/* ── Horizontal rule that draws in on scroll ──────────────────────── */}
       <motion.div
         initial={{ scaleX: 0 }}
@@ -156,7 +154,7 @@ export default function Contact() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, ease: EASE }}
-            className="font-mono text-[10px] md:text-xs uppercase tracking-[0.18em] text-white/40 mb-5 flex items-center gap-2"
+            className="font-mono text-[10px] md:text-xs uppercase tracking-[0.18em] text-muted mb-5 flex items-center gap-2"
           >
             <span className="inline-block w-1 h-1 rounded-full bg-brand-red" />
             Get in touch with us
@@ -168,7 +166,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.05, ease: EASE }}
-              className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif text-white tracking-tight leading-[0.92]"
+              className="text-5xl md:text-7xl lg:text-[5.5rem] font-serif text-ink tracking-tight leading-[0.92]"
             >
               Ready to empower your{' '}
               <span className="font-serif italic text-brand-red">financial growth?</span>
@@ -179,7 +177,7 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
-              className="text-base md:text-lg text-white/50 leading-relaxed font-sans max-w-lg lg:pb-2"
+              className="text-base md:text-lg text-ink-soft leading-relaxed font-sans max-w-lg lg:pb-2"
             >
               We drive client growth through expert financial advisory and strong
               industry relationships. Tell us about your goals and let's explore
@@ -195,7 +193,7 @@ export default function Contact() {
           <div className="lg:col-span-4 flex flex-col gap-5">
 
             {/* Animated rule */}
-            <div className="w-full h-px bg-white/[0.07] relative mb-2 overflow-hidden">
+            <div className="w-full h-px bg-rule relative mb-2 overflow-hidden">
               <motion.div
                 animate={{ x: ['-100%', '400%'] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
@@ -232,20 +230,20 @@ export default function Contact() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: EASE }}
-                className="group flex items-start gap-4 p-5 rounded-2xl border border-white/[0.07] bg-white/[0.025] backdrop-blur-sm hover:border-brand-red/40 hover:bg-brand-red/[0.04] transition-all duration-400"
+                className="group flex items-start gap-4 p-5 rounded-2xl border border-rule bg-bg-deep/60 hover:border-brand-red/50 hover:bg-brand-red/[0.04] transition-all duration-300"
               >
-                <div className="shrink-0 w-10 h-10 rounded-xl border border-white/10 bg-white/[0.05] flex items-center justify-center text-white/50 group-hover:border-brand-red/50 group-hover:text-brand-red transition-all duration-300">
+                <div className="shrink-0 w-10 h-10 rounded-xl border border-rule bg-bg flex items-center justify-center text-muted group-hover:border-brand-red/60 group-hover:text-brand-red transition-all duration-300">
                   <item.icon className="w-4 h-4" strokeWidth={1.5} />
                 </div>
                 <div className="min-w-0">
-                  <span className="block font-mono text-[9px] uppercase tracking-[0.15em] text-white/35 mb-1">
+                  <span className="block font-mono text-[9px] uppercase tracking-[0.15em] text-muted mb-1">
                     {item.label}
                   </span>
-                  <span className="block font-sans text-sm text-white/75 group-hover:text-white transition-colors duration-300 leading-snug">
+                  <span className="block font-sans text-sm text-ink-soft group-hover:text-ink transition-colors duration-300 leading-snug">
                     {item.value}
                   </span>
                 </div>
-                <ArrowUpRight className="w-3.5 h-3.5 text-white/20 group-hover:text-brand-red shrink-0 mt-1 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                <ArrowUpRight className="w-3.5 h-3.5 text-muted/40 group-hover:text-brand-red shrink-0 mt-1 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </motion.a>
             ))}
 
@@ -255,14 +253,14 @@ export default function Contact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.35, ease: EASE }}
-              className="rounded-2xl overflow-hidden border border-white/[0.07] h-52 relative"
+              className="rounded-2xl overflow-hidden border border-rule h-52 relative"
             >
               <iframe
                 title="Office Map"
                 src="https://maps.google.com/maps?q=The%20Summit%20Business%20Bay%20Omkar%20Andheri%20East&t=&z=15&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="100%"
-                style={{ border: 0, filter: 'grayscale(100%) contrast(88%) brightness(0.55) saturate(0)' }}
+                style={{ border: 0, filter: 'grayscale(100%) contrast(90%) brightness(0.92) saturate(0)' }}
                 allowFullScreen={false}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -513,6 +511,11 @@ export default function Contact() {
                         </span>
                       </button>
 
+                      {submitError && (
+                        <p className="mt-3 text-center font-mono text-[10px] text-brand-red">
+                          {submitError}
+                        </p>
+                      )}
                       <p className="mt-4 text-center font-mono text-[9px] uppercase tracking-wider text-white/20">
                         We respond within 24 business hours · Confidential
                       </p>

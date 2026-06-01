@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 import SectionWrapper from './SectionWrapper';
 import { Reveal } from './Reveal';
+import espsLogo from '../public/esps_logo.png';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -50,24 +52,6 @@ const stats = [
 ];
 
 export default function About({ transparent = false }: { transparent?: boolean }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    
-    // Programmatic compliance to force autoplay on mobile Safari/Chrome
-    video.muted = true;
-    video.playsInline = true;
-    
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch((err) => {
-        console.warn("Video autoplay prevented:", err);
-      });
-    }
-  }, []);
-
   return (
     <SectionWrapper id="about" className={`${transparent ? 'bg-transparent' : 'bg-bg'} relative px-6 md:px-12 py-[12vh]`}>
       <div className="max-w-[90rem] mx-auto">
@@ -75,6 +59,35 @@ export default function About({ transparent = false }: { transparent?: boolean }
           
           {/* Left: Sticky Text Content */}
           <div className="md:sticky md:top-[20vh] self-start space-y-12">
+
+            {/* Company Logo — floating, no background */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.88, y: 16 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: EASE }}
+              className="flex flex-col items-center justify-center py-4"
+            >
+              <div className="relative overflow-hidden">
+                <Image
+                  src={espsLogo}
+                  alt="ESPS Capital"
+                  width={372}
+                  height={372}
+                  className="object-contain w-[17rem] h-[17rem] md:w-[23.5rem] md:h-[23.5rem]"
+                  priority
+                />
+                {/* Shimmer sweep — plays once on entry */}
+                <motion.div
+                  initial={{ x: '-160%', skewX: -18 }}
+                  whileInView={{ x: '260%' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.85, delay: 0.6, ease: [0.4, 0, 0.2, 1] }}
+                  className="absolute inset-0 w-2/5 bg-gradient-to-r from-transparent via-white/60 to-transparent pointer-events-none"
+                />
+              </div>
+            </motion.div>
+
             <div>
               <Reveal as="div" className="font-mono text-[10px] md:text-xs uppercase tracking-[0.1em] text-muted mb-6">
                 <span className="text-brand-red mr-2">●</span>
@@ -89,7 +102,7 @@ export default function About({ transparent = false }: { transparent?: boolean }
               </Reveal>
             </div>
 
-            <div className="grid grid-cols-3 gap-6 pt-12 border-t border-rule mb-12">
+            <div className="grid grid-cols-3 gap-6 pt-12 border-t border-rule">
               {stats.map((s, i) => (
                 <Reveal key={s.label} delay={i * 0.1}>
                   <div className="text-3xl md:text-5xl font-serif text-ink mb-2">
@@ -102,44 +115,6 @@ export default function About({ transparent = false }: { transparent?: boolean }
               ))}
             </div>
 
-            {/* Editorial Video */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: EASE }}
-              className="relative w-full aspect-[4/3] rounded-xl overflow-hidden border border-rule bg-bg-deep group/video cursor-pointer"
-            >
-              <video
-                ref={videoRef}
-                src="/about_video.mp4"
-                poster="/about_video_poster.webp"
-                loop
-                muted
-                playsInline
-                preload="auto"
-                className="w-full h-full object-cover opacity-75 group-hover/video:scale-105 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]"
-              />
-
-              {/* Black gradient wash — softens the video backdrop */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/30 pointer-events-none" />
-
-              {/* Text overlay */}
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.2, ease: EASE }}
-                className="absolute inset-x-0 bottom-0 p-7 md:p-9"
-              >
-                <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/55 mb-2">
-                  ESPS Capital
-                </div>
-                <h3 className="text-2xl md:text-4xl font-serif italic text-white leading-tight">
-                  Knowledge Creates Wealth
-                </h3>
-              </motion.div>
-            </motion.div>
           </div>
 
           {/* Right: Scrolling Content Panels */}
