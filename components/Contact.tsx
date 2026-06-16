@@ -217,8 +217,8 @@ export default function Contact() {
               {
                 icon: MapPin,
                 label: 'Office',
-                value: 'The Summit Business Bay, Andheri East, Mumbai',
-                href: 'https://maps.google.com/?q=The+Summit+Business+Bay+Omkar+Andheri+East',
+                value: 'Office No 902, The Corporate Park, Sector 18, Vashi, Navi Mumbai',
+                href: 'https://maps.google.com/?q=Office+902+Corporate+Park+Sector+18+Vashi+Navi+Mumbai',
               },
             ].map((item, i) => (
               <motion.a

@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none" stroke="#D32238" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Document / debt agreement -->
+  <rect x="18" y="16" width="46" height="62" rx="7" fill="#ffffff"/>
+  <line x1="28" y1="32" x2="54" y2="32"/>
+  <line x1="28" y1="44" x2="54" y2="44"/>
+  <line x1="28" y1="56" x2="44" y2="56"/>
+  <!-- Coin stack -->
+  <ellipse cx="74" cy="96" rx="22" ry="7" fill="#ffffff"/>
+  <ellipse cx="74" cy="87" rx="22" ry="7" fill="#ffffff"/>
+  <ellipse cx="74" cy="78" rx="22" ry="7" fill="#F6C9CF"/>
+</svg>
