@@ -349,30 +349,6 @@ function DesktopDropdown({
                     ))}
                   </ul>
 
-                  {active.clients && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.4, duration: 0.45, ease: EASE }}
-                      className="mt-10 max-w-2xl"
-                    >
-                      <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-bg/40">
-                        Our Clients
-                      </span>
-                      <ul className="mt-3 space-y-2">
-                        {active.clients.map((c) => (
-                          <li
-                            key={c}
-                            className="flex items-start gap-3 font-sans text-sm lg:text-base text-bg/75"
-                          >
-                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-brand-red shrink-0" />
-                            <span>{c}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </motion.div>
-                  )}
-
                   {/* CTA */}
                   <motion.button
                     initial={{ opacity: 0, y: 12 }}
@@ -443,6 +419,44 @@ function DropdownInner({ active }: { active: Offering }) {
       >
         {active.tagline}
       </motion.p>
+
+      {active.clients && <ClientGrid clients={active.clients} theme="dark" />}
+    </div>
+  );
+}
+
+/* ── 2×2 highlight grid of client names ──────────────────────────────────── */
+function ClientGrid({ clients, theme }: { clients: string[]; theme: 'dark' | 'light' }) {
+  const isDark = theme === 'dark';
+  return (
+    <div className="mt-8 max-w-md">
+      <span
+        className={`block font-mono text-[10px] uppercase tracking-[0.2em] mb-3 ${isDark ? 'text-bg/40' : 'text-muted'
+          }`}
+      >
+        Our Clients
+      </span>
+      <div className="grid grid-cols-2 gap-3">
+        {clients.map((c, i) => (
+          <motion.div
+            key={c}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 + i * 0.06, duration: 0.4, ease: EASE }}
+            className={`rounded-xl border px-4 py-3.5 flex items-center min-h-[68px] transition-colors duration-300 ${isDark
+                ? 'border-brand-red/25 bg-brand-red/10 hover:bg-brand-red/15'
+                : 'border-brand-red/20 bg-brand-red/[0.05] hover:bg-brand-red/10'
+              }`}
+          >
+            <span
+              className={`font-sans text-sm font-semibold leading-snug ${isDark ? 'text-bg' : 'text-ink'
+                }`}
+            >
+              {c}
+            </span>
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 }
@@ -499,6 +513,8 @@ function ExpandedCard({
 
           <h3 className="text-3xl md:text-4xl font-serif text-ink leading-tight">{offering.title}</h3>
 
+          {offering.clients && <ClientGrid clients={offering.clients} theme="light" />}
+
           <p className="mt-5 text-base md:text-lg text-ink-soft leading-relaxed font-sans">
             {offering.description}
           </p>
@@ -517,22 +533,6 @@ function ExpandedCard({
               </motion.li>
             ))}
           </ul>
-
-          {offering.clients && (
-            <div className="mt-8 border-t border-rule pt-6">
-              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
-                Our Clients
-              </span>
-              <ul className="mt-3 space-y-2">
-                {offering.clients.map((c) => (
-                  <li key={c} className="flex items-start gap-3 font-sans text-sm text-ink-soft">
-                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-red shrink-0" />
-                    <span>{c}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
 
           {/* CTA */}
           <motion.button
