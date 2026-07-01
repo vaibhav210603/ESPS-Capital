@@ -430,10 +430,7 @@ function ClientGrid({ clients, theme }: { clients: string[]; theme: 'dark' | 'li
   const isDark = theme === 'dark';
   return (
     <div className="mt-8 max-w-md">
-      <span
-        className={`block font-mono text-[10px] uppercase tracking-[0.2em] mb-3 ${isDark ? 'text-bg/40' : 'text-muted'
-          }`}
-      >
+      <span className="inline-block bg-brand-red text-white font-extrabold px-4 py-2 mb-4 text-sm md:text-base uppercase tracking-[0.1em]">
         Our Clients
       </span>
       <div className="grid grid-cols-2 gap-3">
