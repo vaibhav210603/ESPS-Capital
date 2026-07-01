@@ -354,21 +354,22 @@ function DesktopDropdown({
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.4, duration: 0.45, ease: EASE }}
-                      className="mt-8 max-w-2xl"
+                      className="mt-10 max-w-2xl"
                     >
                       <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-bg/40">
-                        Trusted by
+                        Our Clients
                       </span>
-                      <div className="mt-3 flex flex-wrap gap-2">
+                      <ul className="mt-3 space-y-2">
                         {active.clients.map((c) => (
-                          <span
+                          <li
                             key={c}
-                            className="rounded-full border border-white/15 px-4 py-2 font-sans text-sm text-bg/75"
+                            className="flex items-start gap-3 font-sans text-sm lg:text-base text-bg/75"
                           >
-                            {c}
-                          </span>
+                            <span className="mt-2 w-1.5 h-1.5 rounded-full bg-brand-red shrink-0" />
+                            <span>{c}</span>
+                          </li>
                         ))}
-                      </div>
+                      </ul>
                     </motion.div>
                   )}
 
@@ -518,20 +519,18 @@ function ExpandedCard({
           </ul>
 
           {offering.clients && (
-            <div className="mt-6">
+            <div className="mt-8 border-t border-rule pt-6">
               <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
-                Trusted by
+                Our Clients
               </span>
-              <div className="mt-3 flex flex-wrap gap-2">
+              <ul className="mt-3 space-y-2">
                 {offering.clients.map((c) => (
-                  <span
-                    key={c}
-                    className="rounded-full border border-rule px-3.5 py-1.5 font-sans text-xs text-ink-soft"
-                  >
-                    {c}
-                  </span>
+                  <li key={c} className="flex items-start gap-3 font-sans text-sm text-ink-soft">
+                    <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-brand-red shrink-0" />
+                    <span>{c}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           )}
 
