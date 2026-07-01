@@ -76,22 +76,7 @@ export default function Hero() {
           Empowering Your <span className="font-serif italic text-brand-red">Financial Growth</span> with Strategic Expertise.
         </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: EASE }}
-          className="font-mono text-[10px] md:text-xs uppercase tracking-[0.1em] text-muted mt-12 mb-12 flex flex-wrap gap-4"
-        >
-          <span>Online trading</span>
-          <span className="text-rule">/</span>
-          <span>Mutual funds</span>
-          <span className="text-rule">/</span>
-          <span>Insurance</span>
-          <span className="text-rule">/</span>
-          <span>Loans</span>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 gap-12 items-end">
+        <div className="grid md:grid-cols-2 gap-12 items-end mt-12">
           <motion.p
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}

@@ -11,6 +11,7 @@ const SERVICES = [
   { id: 'real-estate-infra',  label: 'Real Estate & Infra' },
   { id: 'corporate-advisory', label: 'Corporate Advisory' },
   { id: 'merchant-banking',   label: 'Merchant Banking' },
+  { id: 'ipo-listing',        label: 'IPO Listing' },
   { id: 'general',            label: 'General Inquiry' },
 ];
 

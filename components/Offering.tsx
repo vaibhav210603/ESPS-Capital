@@ -7,6 +7,7 @@ import {
   Building2,
   Briefcase,
   Landmark,
+  TrendingUp,
   Plus,
   X,
   ArrowUpRight,
@@ -25,6 +26,7 @@ type Offering = {
   tagline: string;
   description: string;
   points: string[];
+  clients?: string[];
 };
 
 // NOTE: Placeholder copy — refine with the firm's verified descriptions.
@@ -41,6 +43,12 @@ const offerings: Offering[] = [
       'Term loans & working capital facilities',
       'Structured & mezzanine debt',
       'Refinancing & balance-sheet optimisation',
+    ],
+    clients: [
+      'Aryan Trade Link',
+      'RV Agarwal Impex Pvt Ltd',
+      'Growington Ventures India Ltd',
+      'Agronica Seeds Spark Pvt Ltd',
     ],
   },
   {
@@ -83,6 +91,20 @@ const offerings: Offering[] = [
       'IPOs, QIPs & rights issues',
       'Private placements',
       'Transaction & regulatory advisory',
+    ],
+  },
+  {
+    id: 'ipo-listing',
+    icon: TrendingUp,
+    image: '/images/offer_ipo.svg',
+    title: 'IPO Listing',
+    tagline: 'From private to public.',
+    description:
+      'End-to-end IPO listing advisory across the SME and Main Board platforms of both BSE and NSE — guiding companies through structuring, compliance, and execution to a successful public listing.',
+    points: [
+      'SME Board listings — BSE & NSE',
+      'Main Board IPOs — BSE & NSE',
+      'Listing compliance & execution support',
     ],
   },
 ];
@@ -135,13 +157,13 @@ export default function Offering() {
             </Reveal>
           </div>
           <Reveal as="p" delay={0.2} className="text-lg text-ink-soft leading-relaxed font-sans max-w-md md:justify-self-end">
-            Four core capabilities, each built around your goals. Tap any
+            Five core capabilities, each built around your goals. Tap any
             offering to explore how we put it to work.
           </Reveal>
         </div>
 
-        {/* Offerings Grid — 2×2 on mobile, 1×4 on desktop */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+        {/* Offerings Grid — 2 cols on mobile, 5 on desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 md:gap-6">
           {offerings.map((o, i) => (
             <OfferingCard
               key={o.id}
@@ -327,6 +349,29 @@ function DesktopDropdown({
                     ))}
                   </ul>
 
+                  {active.clients && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 12 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.4, duration: 0.45, ease: EASE }}
+                      className="mt-8 max-w-2xl"
+                    >
+                      <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-bg/40">
+                        Trusted by
+                      </span>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        {active.clients.map((c) => (
+                          <span
+                            key={c}
+                            className="rounded-full border border-white/15 px-4 py-2 font-sans text-sm text-bg/75"
+                          >
+                            {c}
+                          </span>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+
                   {/* CTA */}
                   <motion.button
                     initial={{ opacity: 0, y: 12 }}
@@ -371,7 +416,7 @@ function DropdownInner({ active }: { active: Offering }) {
         transition={{ delay: 0.05, duration: 0.5 }}
         className="font-mono text-sm text-brand-red mb-6"
       >
-        0{idx + 1} / 04
+        0{idx + 1} / 0{offerings.length}
       </motion.span>
       <motion.div
         initial={{ opacity: 0, scale: 0.85, rotate: -8 }}
@@ -471,6 +516,24 @@ function ExpandedCard({
               </motion.li>
             ))}
           </ul>
+
+          {offering.clients && (
+            <div className="mt-6">
+              <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
+                Trusted by
+              </span>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {offering.clients.map((c) => (
+                  <span
+                    key={c}
+                    className="rounded-full border border-rule px-3.5 py-1.5 font-sans text-xs text-ink-soft"
+                  >
+                    {c}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* CTA */}
           <motion.button
