@@ -14,7 +14,7 @@ export default function Hero() {
 
       {/* Top Meta Row */}
       <div className="relative z-10 w-full max-w-[90rem] mx-auto px-6 md:px-12 flex justify-between items-start font-mono text-[10px] md:text-xs uppercase tracking-[0.1em] text-muted">
-        <div>ESPS Capital<br/>Mumbai, India</div>
+        <div className="inline-block bg-brand-red text-white font-extrabold px-4 py-2 leading-relaxed">ESPS Capital<br/>Mumbai, India</div>
         <div className="text-right max-w-[200px] leading-relaxed">
           Your Trusted Partner in Strategic Financial Advisory
         </div>
